@@ -1,5 +1,27 @@
-const ButtonBack = () => {
-  return <div>ButtonBack</div>;
-};
+import { useNavigate } from "react-router-dom";
+import Button from "./Button";
+import React from "react";
 
-export default ButtonBack;
+interface BackButtonProps {
+  onClick?: React.MouseEventHandler<HTMLButtonElement> | (() => void);
+}
+
+function BackButton({ onClick }: BackButtonProps) {
+  const navigate = useNavigate();
+
+  const handleBackClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault();
+    navigate(-1);
+    if (onClick) {
+      onClick(e);
+    }
+  };
+
+  return (
+    <Button type="back" onClick={handleBackClick}>
+      &larr; Back
+    </Button>
+  );
+}
+
+export default BackButton;

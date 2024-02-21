@@ -1,22 +1,13 @@
-import React from "react";
-import styles from "./CityList.module.css";
 import Spinner from "./Spinner";
+import styles from "./CityList.module.css";
 import CityItem from "./CityItem";
 import Message from "./Message";
+import { useCities } from "../contexts/CitiesContext";
+import React from "react";
 
-interface City {
-  id: string;
-  cityName: string;
-  emoji: string;
-  date: string;
-}
+function CityList() {
+  const { cities, isLoading } = useCities();
 
-interface CityListProps {
-  cities: City[];
-  isLoading: boolean;
-}
-
-const CityList: React.FC<CityListProps> = ({ cities, isLoading }) => {
   if (isLoading) return <Spinner />;
 
   if (!cities.length)
@@ -27,10 +18,17 @@ const CityList: React.FC<CityListProps> = ({ cities, isLoading }) => {
   return (
     <ul className={styles.cityList}>
       {cities.map((city) => (
-        <CityItem key={city.id} city={city} />
+        <CityItem
+          id={city.id}
+          cityName={city.cityName || ""}
+          emoji={city.emoji || ""}
+          date={city.date || ""}
+          notes={city.notes || ""}
+          key={city.id}
+        />
       ))}
     </ul>
   );
-};
+}
 
 export default CityList;

@@ -1,75 +1,63 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Product from "./pages/Product";
-import Pricing from "./pages/Pricing";
-import Homepage from "./pages/Homepage";
-import AppLayout from "./pages/AppLayout";
-import PageNotFound from "./pages/PageNotFound";
-import Login from "./pages/Login";
+import React, { lazy, Suspense } from "react";
+import { BrowserRouter, Routes, Route, Navigate, Form } from "react-router-dom";
+import { CitiesProvider } from "./contexts/CitiesContext";
+import { AuthProvider } from "./contexts/FakeAuthContext";
+import ProtectedRoute from "./pages/ProtectedRoute";
+import SpinnerFullPage from "./components/SpinnerFullPage";
 import CityList from "./components/CityList";
-import { useEffect, useState } from "react";
 import CountryList from "./components/CountryList";
-import City from "./components/City";
+import City from "./components/CityItem";
 
-const BASE_URL = "http://localhost:9000";
+const Homepage = lazy(() => import("./pages/Homepage"));
+const Product = lazy(() => import("./pages/Product"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+const Login = lazy(() => import("./pages/Login"));
+const AppLayout = lazy(() => import("./pages/AppLayout"));
+const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 
-interface City {
-  id: string;
-  cityName: string;
-  emoji: string;
-  date: string;
-  country: string;
-}
-
-const App: React.FC = () => {
-  const [cities, setCities] = useState<City[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    async function fetchCities() {
-      try {
-        setIsLoading(true);
-        const res = await fetch(`${BASE_URL}/cities`);
-        if (!res.ok) {
-          throw new Error("Failed to fetch cities");
-        }
-        const data = await res.json();
-        setCities(data);
-      } catch (error) {
-        console.error("Error fetching cities:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchCities();
-  }, []);
-
+function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<Homepage />} />
-        <Route path="product" element={<Product />} />
-        <Route path="pricing" element={<Pricing />} />
-        <Route path="login" element={<Login />} />
-        <Route path="app" element={<AppLayout />}>
-          <Route
-            index
-            element={<CityList cities={cities} isLoading={isLoading} />}
-          />
-          <Route
-            path="cities"
-            element={<CityList cities={cities} isLoading={isLoading} />}
-          />
-          <Route path="cities/id:" element={<City />} />
-          <Route
-            path="countries"
-            element={<CountryList cities={cities} isLoading={isLoading} />}
-          />
-          <Route path="form" element={<p>Form</p>} />
-        </Route>
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <CitiesProvider>
+        <BrowserRouter>
+          <Suspense fallback={<SpinnerFullPage />}>
+            <Routes>
+              <Route index element={<Homepage />} />
+              <Route path="product" element={<Product />} />
+              <Route path="pricing" element={<Pricing />} />
+              <Route path="login" element={<Login />} />
+              <Route
+                path="app"
+                element={
+                  <ProtectedRoute>
+                    <AppLayout />
+                  </ProtectedRoute>
+                }
+              >
+                <Route index element={<Navigate replace to="cities" />} />
+                <Route path="cities" element={<CityList />} />
+                <Route
+                  path="cities/:id"
+                  element={
+                    <City
+                      id={0}
+                      cityName={""}
+                      emoji={""}
+                      date={""}
+                      notes={""}
+                    />
+                  }
+                />
+                <Route path="countries" element={<CountryList />} />
+                <Route path="form" element={<Form />} />
+              </Route>
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </CitiesProvider>
+    </AuthProvider>
   );
-};
+}
 
 export default App;

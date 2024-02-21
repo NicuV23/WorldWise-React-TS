@@ -2,8 +2,9 @@ import { Outlet } from "react-router-dom";
 import AppNav from "./AppNav";
 import Logo from "./Logo";
 import styles from "./Sidebar.module.css";
+import React from "react";
 
-const Sidebar = () => {
+function Sidebar() {
   return (
     <div className={styles.sidebar}>
       <Logo />
@@ -18,6 +19,6 @@ const Sidebar = () => {
       </footer>
     </div>
   );
-};
+}
 
 export default Sidebar;

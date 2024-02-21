@@ -1,25 +1,36 @@
-import ButtonBack from "./BackButton";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useCities } from "../contexts/CitiesContext";
+import BackButton from "./BackButton";
 import styles from "./City.module.css";
-
-const formatDate = (date: string) =>
-  new Intl.DateTimeFormat("en", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    weekday: "long",
-  }).format(new Date(date));
+import Spinner from "./Spinner";
 
 function City() {
-  // const { id } = useParams();
+  const { id } = useParams();
+  const { getCity, currentCity, isLoading } = useCities();
 
-  const currentCity = {
-    cityName: "Lisbon",
-    emoji: "🇵🇹",
-    date: "2027-10-31T15:59:59.138Z",
-    notes: "My favorite city so far!",
-  };
+  useEffect(() => {
+    if (id) {
+      getCity(Number(id));
+    }
+  }, [id, getCity]);
 
   const { cityName, emoji, date, notes } = currentCity;
+
+  if (isLoading) return <Spinner />;
+
+  if (!currentCity.id) {
+    return <div>Error: City not found</div>;
+  }
+
+  const formattedDate = date
+    ? new Intl.DateTimeFormat("en", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        weekday: "long",
+      }).format(new Date(date))
+    : "";
 
   return (
     <div className={styles.city}>
@@ -32,7 +43,7 @@ function City() {
 
       <div className={styles.row}>
         <h6>You went to {cityName} on</h6>
-        <p>{formatDate(date)}</p>
+        <p>{formattedDate}</p>
       </div>
 
       {notes && (
@@ -54,7 +65,7 @@ function City() {
       </div>
 
       <div>
-        <ButtonBack />
+        <BackButton />
       </div>
     </div>
   );

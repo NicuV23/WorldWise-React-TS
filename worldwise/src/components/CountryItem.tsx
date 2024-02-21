@@ -1,10 +1,17 @@
-import styles from "./CountryItem.module.css";
+import React from "react";
 
-function CountryItem({ country }) {
+interface CountryItemProps {
+  country: {
+    country: string;
+    emoji?: string | undefined;
+  };
+  key: string;
+}
+
+function CountryItem({ country, key }: CountryItemProps) {
   return (
-    <li className={styles.countryItem}>
-      <span>{country.emoji}</span>
-      <span>{country.country}</span>
+    <li key={key}>
+      {country.country} {country.emoji && <span>{country.emoji}</span>}
     </li>
   );
 }

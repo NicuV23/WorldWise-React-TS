@@ -1,42 +1,40 @@
 import React from "react";
-import styles from "./CityItem.module.css";
 import { Link } from "react-router-dom";
+import styles from "./CityItem.module.css";
 
-const formatDate = (date: string) =>
-  new Intl.DateTimeFormat("en", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  }).format(new Date(date));
-
-interface City {
+interface CityItemProps {
   id: number;
   cityName: string;
   emoji: string;
   date: string;
-  position: {
-    lat: number;
-    lng: number;
-  };
+  notes: string;
 }
 
-interface CityItemProps {
-  city: City;
-}
+const formattedDate = (date: string | undefined) =>
+  date
+    ? new Intl.DateTimeFormat("en", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }).format(new Date(date))
+    : "";
 
-const CityItem: React.FC<CityItemProps> = ({ city }) => {
-  const { cityName, emoji, date, id, position } = city;
+function CityItem({ id, cityName, emoji, date, notes }: CityItemProps) {
+  const formattedDateString = formattedDate(date);
 
   return (
-    <li>
-      <Link className={styles.cityItem} to={`${id}?lat=${position.lat}`}>
+    <div className={styles.cityItem}>
+      <div>
         <span className={styles.emoji}>{emoji}</span>
-        <h3 className={styles.name}>{cityName}</h3>
-        <time className={styles.date}>({formatDate(date)})</time>
-        <button className={styles.deleteBtn}>&times;</button>
+        <h3>{cityName}</h3>
+      </div>
+      <p>{formattedDateString}</p> {/* Folosește formattedDateString aici */}
+      <p>{notes}</p>
+      <Link to={`/cities/${id}`} className={styles.link}>
+        View Details
       </Link>
-    </li>
+    </div>
   );
-};
+}
 
 export default CityItem;
