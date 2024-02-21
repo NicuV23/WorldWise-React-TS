@@ -7,11 +7,12 @@ import Spinner from "./Spinner";
 
 function City() {
   const { id } = useParams();
+  console.log("aici e id", id);
   const { getCity, currentCity, isLoading } = useCities();
 
   useEffect(() => {
     if (id) {
-      getCity(Number(id));
+      getCity(id);
     }
   }, [id, getCity]);
 

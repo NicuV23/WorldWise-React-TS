@@ -77,7 +77,7 @@ interface CitiesContextProps {
   isLoading: boolean;
   currentCity: Partial<City>;
   error: string;
-  getCity: (id: number) => Promise<void>;
+  getCity: (id: string) => Promise<void>;
   createCity: (newCity: City) => Promise<void>;
   deleteCity: (id: number) => Promise<void>;
 }
@@ -108,7 +108,7 @@ function CitiesProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const getCity = useCallback(
-    async function getCity(id: number) {
+    async function getCity(id: string) {
       if (!id) {
         dispatch({
           type: "rejected",
@@ -116,8 +116,6 @@ function CitiesProvider({ children }: { children: React.ReactNode }) {
         });
         return;
       }
-
-      if (Number(id) === currentCity.id) return;
 
       dispatch({ type: "loading" });
 

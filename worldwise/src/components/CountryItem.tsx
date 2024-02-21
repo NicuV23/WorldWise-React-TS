@@ -8,12 +8,12 @@ interface CountryItemProps {
   key: string;
 }
 
-function CountryItem({ country, key }: CountryItemProps) {
+const CountryItem: React.FC<CountryItemProps> = ({ country, key }) => {
   return (
     <li key={key}>
       {country.country} {country.emoji && <span>{country.emoji}</span>}
     </li>
   );
-}
+};
 
 export default CountryItem;

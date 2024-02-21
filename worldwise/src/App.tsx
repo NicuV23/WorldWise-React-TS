@@ -1,12 +1,13 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route, Navigate, Form } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { CitiesProvider } from "./contexts/CitiesContext";
 import { AuthProvider } from "./contexts/FakeAuthContext";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import SpinnerFullPage from "./components/SpinnerFullPage";
 import CityList from "./components/CityList";
 import CountryList from "./components/CountryList";
-import City from "./components/CityItem";
+import Form from "./components/Form";
+import City from "./components/City";
 
 const Homepage = lazy(() => import("./pages/Homepage"));
 const Product = lazy(() => import("./pages/Product"));
@@ -36,18 +37,8 @@ function App() {
               >
                 <Route index element={<Navigate replace to="cities" />} />
                 <Route path="cities" element={<CityList />} />
-                <Route
-                  path="cities/:id"
-                  element={
-                    <City
-                      id={0}
-                      cityName={""}
-                      emoji={""}
-                      date={""}
-                      notes={""}
-                    />
-                  }
-                />
+                <Route path="cities/:id" element={<City />} />
+                {/* trebuie cities/:id facut astfel incat sa mearga pe o componeta oarecare */}
                 <Route path="countries" element={<CountryList />} />
                 <Route path="form" element={<Form />} />
               </Route>

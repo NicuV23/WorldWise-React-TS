@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "./Button";
@@ -10,11 +10,11 @@ import Spinner from "./Spinner";
 import { useCities } from "../contexts/CitiesContext";
 import { useNavigate } from "react-router-dom";
 
-export function convertToEmoji(countryCode) {
+export function convertToEmoji(countryCode: string) {
   const codePoints = countryCode
     .toUpperCase()
     .split("")
-    .map((char) => 127397 + char.charCodeAt());
+    .map((char: string) => 127397 + char.charCodeAt());
   return String.fromCodePoint(...codePoints);
 }
 
@@ -28,9 +28,10 @@ function Form() {
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
   const [cityName, setCityName] = useState("");
   const [country, setCountry] = useState("");
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState<Date | null>(new Date());
   const [notes, setNotes] = useState("");
   const [emoji, setEmoji] = useState("");
+  const [id, setId] = useState<number>(0);
   const [geocodingError, setGeocodingError] = useState("");
 
   useEffect(() => {
@@ -49,6 +50,7 @@ function Form() {
             "That doesn't seem to be a city. Click somewhere else 😉"
           );
 
+        setId(data.id);
         setCityName(data.city || data.locality || "");
         setCountry(data.countryName);
         setEmoji(convertToEmoji(data.countryCode));
@@ -61,12 +63,13 @@ function Form() {
     fetchCityData();
   }, [lat, lng]);
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e: FormEvent<HTMLInputElement>) {
     e.preventDefault();
 
     if (!cityName || !date) return;
 
     const newCity = {
+      id,
       cityName,
       country,
       emoji,
