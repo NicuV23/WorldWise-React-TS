@@ -1,30 +1,6 @@
 {
   "cities": [
     {
-      "id": "7201",
-      "cityName": "San Remo",
-      "country": "Italy",
-      "emoji": "🇮🇹",
-      "date": "2024-02-22T10:42:08.179Z",
-      "notes": "",
-      "position": {
-        "lat": 43.8028187190472,
-        "lng": 7.748786723794391
-      }
-    },
-    {
-      "id": "29d3",
-      "cityName": "Al Khums",
-      "country": "Libya",
-      "emoji": "🇱🇾",
-      "date": "2024-02-22T11:01:30.525Z",
-      "notes": "",
-      "position": {
-        "lat": 32.58384932565662,
-        "lng": 13.386414635105975
-      }
-    },
-    {
       "id": "07d0",
       "cityName": "Senanga District",
       "country": "Zambia",
@@ -37,30 +13,6 @@
       }
     },
     {
-      "id": "04ee",
-      "cityName": "Ankadinondry-Sakay",
-      "country": "Madagascar",
-      "emoji": "🇲🇬",
-      "date": "2024-02-22T11:01:50.897Z",
-      "notes": "",
-      "position": {
-        "lat": -18.895892559415024,
-        "lng": 46.46782939087839
-      }
-    },
-    {
-      "id": "7e5e",
-      "cityName": "Talmaciu",
-      "country": "Romania",
-      "emoji": "🇷🇴",
-      "date": "2024-02-22T11:11:21.166Z",
-      "notes": "",
-      "position": {
-        "lat": 45.55252525134013,
-        "lng": 23.90236818079021
-      }
-    },
-    {
       "id": "4103",
       "cityName": "Chivasso",
       "country": "Italy",
@@ -70,6 +22,30 @@
       "position": {
         "lat": 45.182036837015886,
         "lng": 7.951182596619036
+      }
+    },
+    {
+      "id": "868e",
+      "cityName": "Madrid",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2024-02-22T16:14:40.665Z",
+      "notes": "c",
+      "position": {
+        "lat": 40.43022363450862,
+        "lng": -3.6267551935247293
+      }
+    },
+    {
+      "id": "a111",
+      "cityName": "la Massana",
+      "country": "Andorra",
+      "emoji": "🇦🇩",
+      "date": "2024-02-22T16:16:05.524Z",
+      "notes": "",
+      "position": {
+        "lat": 42.52069952914966,
+        "lng": 1.4894682525307925
       }
     }
   ]
