@@ -4,6 +4,7 @@
   display: flex;
   gap: 1.6rem;
   align-items: center;
+  justify-content: space-between;
 
   background-color: var(--color-dark--2);
   border-radius: 7px;
@@ -26,13 +27,19 @@
 }
 
 .name {
-  font-size: 1.7rem;
+  font-size: 2.2rem;
   font-weight: 600;
   margin-right: auto;
 }
 
+.notes {
+  font-weight: 700;
+  font-size: 12px;
+}
+
 .date {
-  font-size: 1.5rem;
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .deleteBtn {
@@ -57,7 +64,8 @@
   font-size: 1.5em;
 }
 
-.cityItem {
+.group {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
 }

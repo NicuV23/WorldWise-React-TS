@@ -4,9 +4,12 @@ import CityItem from "./CityItem";
 import Message from "./Message";
 import { useCities } from "../contexts/CitiesContext";
 import React from "react";
-
 function CityList() {
-  const { cities, isLoading } = useCities();
+  const { cities, isLoading, deleteCity } = useCities();
+
+  const handleDelete = (id: number) => {
+    deleteCity(id);
+  };
 
   if (isLoading) {
     return <Spinner />;
@@ -22,6 +25,7 @@ function CityList() {
     <ul className={styles.cityList}>
       {cities.map((city) => (
         <CityItem
+          onDelete={handleDelete}
           id={city.id}
           cityName={city.cityName || ""}
           emoji={city.emoji || ""}

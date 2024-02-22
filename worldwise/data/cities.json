@@ -1,135 +1,27 @@
 {
   "cities": [
     {
-      "id": "4fda",
-      "cityName": "Selu",
-      "country": "India",
-      "emoji": "🇮🇳",
-      "date": "2024-02-21T19:49:49.794Z",
-      "notes": "yrdy",
+      "id": "ed9a",
+      "cityName": "Neuvy-Saint-Sepulchre",
+      "country": "France",
+      "emoji": "🇫🇷",
+      "date": "2024-02-22T10:14:08.449Z",
+      "notes": "e",
       "position": {
-        "lat": "19.437947664679847",
-        "lng": "76.5966796875"
+        "lat": 46.604167162931844,
+        "lng": 1.7773020081915463
       }
     },
     {
-      "id": "fe7a",
-      "cityName": "Utiel",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2024-02-21T20:03:30.892Z",
-      "notes": "gd",
+      "id": "13a0",
+      "cityName": "London",
+      "country": "United Kingdom of Great Britain and Northern Ireland (the)",
+      "emoji": "🇬🇧",
+      "date": "2024-02-22T10:14:14.388Z",
+      "notes": "q",
       "position": {
-        "lat": "39.63953756436671",
-        "lng": "-1.31795940871311"
-      }
-    },
-    {
-      "id": "8a3f",
-      "cityName": "Boisoara",
-      "country": "Romania",
-      "emoji": "🇷🇴",
-      "date": "2024-02-21T20:05:56.980Z",
-      "notes": "Text\n",
-      "position": {
-        "lat": "45.537136680398596",
-        "lng": "24.479938860221303"
-      }
-    },
-    {
-      "id": "c341",
-      "cityName": "Morella",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2024-02-21T20:25:31.218Z",
-      "notes": "test\n",
-      "position": {
-        "lat": 40.66397287638688,
-        "lng": -0.08599745124207915
-      }
-    },
-    {
-      "id": "c1a1",
-      "cityName": "Corbalan",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2024-02-21T20:27:13.336Z",
-      "notes": "tres\n",
-      "position": {
-        "lat": 40.43022363450862,
-        "lng": -1.0099689193453523
-      }
-    },
-    {
-      "id": "ba36",
-      "cityName": "Sebes",
-      "country": "Romania",
-      "emoji": "🇷🇴",
-      "date": "2024-02-21T20:31:57.186Z",
-      "notes": "",
-      "position": {
-        "lat": 45.99123719923831,
-        "lng": 23.615368949721567
-      }
-    },
-    {
-      "id": "6716",
-      "cityName": "Valle de Echo",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2024-02-21T20:35:47.379Z",
-      "notes": "",
-      "position": {
-        "lat": 42.8115217450979,
-        "lng": -0.6999785985431829
-      }
-    },
-    {
-      "id": "211c",
-      "cityName": "Checa",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2024-02-21T20:42:09.915Z",
-      "notes": "sebes\n",
-      "position": {
-        "lat": 40.51379915504413,
-        "lng": -1.800637906896727
-      }
-    },
-    {
-      "id": "cd8d",
-      "cityName": "Andilla",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2024-02-21T20:54:31.826Z",
-      "notes": "",
-      "position": {
-        "lat": 39.827796309755875,
-        "lng": -0.7954816730620285
-      }
-    },
-    {
-      "id": "0752",
-      "cityName": "Sotonera, La",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2024-02-21T21:25:06.005Z",
-      "notes": "",
-      "position": {
-        "lat": 42.245971991723124,
-        "lng": -0.5952714403779159
-      }
-    },
-    {
-      "id": "84c1",
-      "cityName": "Saliste",
-      "country": "Romania",
-      "emoji": "🇷🇴",
-      "date": "2024-02-21T21:34:59.779Z",
-      "notes": "",
-      "position": {
-        "lat": 45.861465876232266,
-        "lng": 23.87835983006782
+        "lat": 51.41291212935532,
+        "lng": -0.09102243214313967
       }
     }
   ]

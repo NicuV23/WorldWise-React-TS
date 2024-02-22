@@ -27,11 +27,13 @@ function CountryList() {
   }, [] as Country[]);
 
   return (
-    <ul className={styles.countryList}>
-      {countries.map((country) => (
-        <CountryItem country={country} key={country.country} />
-      ))}
-    </ul>
+    <div>
+      <ul className={styles.countryList}>
+        {countries.map((country) => (
+          <CountryItem country={country} key={country.country} />
+        ))}
+      </ul>
+    </div>
   );
 }
 

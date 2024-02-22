@@ -8,6 +8,7 @@ interface CityItemProps {
   emoji: string;
   date: string;
   notes: string;
+  onDelete: (id: number) => void;
 }
 
 const formattedDate = (date: string | undefined) =>
@@ -19,23 +20,31 @@ const formattedDate = (date: string | undefined) =>
       }).format(new Date(date))
     : "";
 
-function CityItem({ id, cityName, emoji, date, notes }: CityItemProps) {
+function CityItem({
+  id,
+  cityName,
+  emoji,
+  date,
+  notes,
+  onDelete,
+}: CityItemProps) {
   const formattedDateString = formattedDate(date);
   const navigate = useNavigate();
-  console.log(id);
 
   return (
     <div className={styles.cityItem}>
-      <div onClick={() => navigate(`${id}`)} className={styles.listItem}>
+      <div className={styles.group} onClick={() => navigate(`${id}`)}>
         <div>
           <span className={styles.emoji}>{emoji}</span>
-          <h3>{cityName}</h3>
+          <h2 className={styles.name}>{cityName}</h2>
         </div>
-        <p>{formattedDateString}</p> {/* Folosește formattedDateString aici */}
-        <p>{notes}</p>
+        <p className={styles.date}>({formattedDateString})</p>{" "}
+        <p className={styles.notes}>{notes}</p>
         <Link to={`/cities/${id}`} className={styles.link}></Link>
       </div>
-      <button>delete</button>
+      <button onClick={() => onDelete(id)} className={styles.deleteBtn}>
+        &times;
+      </button>
     </div>
   );
 }

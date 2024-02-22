@@ -4,6 +4,8 @@ import React, {
   useContext,
   useReducer,
   useCallback,
+  ReactNode,
+  Dispatch,
 } from "react";
 
 const BASE_URL = "http://localhost:9000";
@@ -36,7 +38,7 @@ const initialState: CitiesState = {
   cities: [],
   isLoading: false,
   currentCity: {
-    id: 0, // sau null/undefined, după preferință
+    id: 0,
   },
   error: "",
 };
@@ -62,7 +64,7 @@ function reducer(state: CitiesState, action: CitiesAction): CitiesState {
         isLoading: false,
         cities: state.cities.filter((city) => city.id !== action.payload),
         currentCity: {
-          id: 0, // sau null/undefined, după preferință
+          id: 0,
         },
       };
     case "rejected":
@@ -83,12 +85,12 @@ interface CitiesContextProps {
 }
 
 const CitiesContext = createContext<CitiesContextProps | null>(null);
+const CitiesDispatchContext = createContext<Dispatch<CitiesAction> | null>(
+  null
+);
 
-function CitiesProvider({ children }: { children: React.ReactNode }) {
-  const [{ cities, isLoading, currentCity, error }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+function CitiesProvider({ children }: { children: ReactNode }) {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     async function fetchCities() {
@@ -130,7 +132,7 @@ function CitiesProvider({ children }: { children: React.ReactNode }) {
         });
       }
     },
-    [currentCity.id]
+    [state.currentCity.id]
   );
 
   async function createCity(newCity: City) {
@@ -175,16 +177,18 @@ function CitiesProvider({ children }: { children: React.ReactNode }) {
   return (
     <CitiesContext.Provider
       value={{
-        cities,
-        isLoading,
-        currentCity,
-        error,
+        cities: state.cities,
+        isLoading: state.isLoading,
+        currentCity: state.currentCity,
+        error: state.error,
         getCity,
         createCity,
         deleteCity,
       }}
     >
-      {children}
+      <CitiesDispatchContext.Provider value={dispatch}>
+        {children}
+      </CitiesDispatchContext.Provider>
     </CitiesContext.Provider>
   );
 }
@@ -196,4 +200,13 @@ function useCities() {
   return context;
 }
 
-export { CitiesProvider, useCities };
+function useCitiesDispatch() {
+  const dispatch = useContext(CitiesDispatchContext);
+  if (!dispatch)
+    throw new Error(
+      "CitiesDispatchContext was used outside the CitiesProvider"
+    );
+  return dispatch;
+}
+
+export { CitiesProvider, useCities, useCitiesDispatch };
