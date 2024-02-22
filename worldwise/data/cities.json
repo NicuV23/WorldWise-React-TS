@@ -1,63 +1,27 @@
 {
   "cities": [
     {
-      "id": "a111",
-      "cityName": "la Massana",
-      "country": "Andorra",
-      "emoji": "🇦🇩",
-      "date": "2024-02-22T16:16:05.524Z",
-      "notes": "",
-      "position": {
-        "lat": 42.52069952914966,
-        "lng": 1.4894682525307925
-      }
-    },
-    {
-      "id": "bac6",
-      "cityName": "Balearic Sea",
+      "id": "3284",
       "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2024-02-22T16:23:18.691Z",
-      "notes": "",
+      "cityName": "Tijola",
+      "emoji": "ES",
+      "date": "2024-02-22T20:52:52.325Z",
+      "notes": "test",
       "position": {
-        "lat": 38.80836885800413,
-        "lng": 0.43230744810073063
+        "lat": 37.38761749978395,
+        "lng": -2.4644184228824777
       }
     },
     {
-      "id": "541c",
-      "cityName": "Figuig",
-      "country": "Morocco",
-      "emoji": "🇲🇦",
-      "date": "2024-02-22T16:23:26.188Z",
-      "notes": "",
+      "id": "41d7",
+      "country": "Algeria",
+      "cityName": "Beni Snous",
+      "emoji": "DZ",
+      "date": "2024-02-22T20:53:00.535Z",
+      "notes": "telaviv\n",
       "position": {
-        "lat": 33.0352542966988,
-        "lng": -2.106472068759671
-      }
-    },
-    {
-      "id": "5d1b",
-      "cityName": "Zuera",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2024-02-22T17:42:08.734Z",
-      "notes": "",
-      "position": {
-        "lat": 41.93631417830425,
-        "lng": -0.8356308447093054
-      }
-    },
-    {
-      "id": "eb1c",
-      "cityName": "Sotonera, La",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2024-02-22T17:54:35.894Z",
-      "notes": "",
-      "position": {
-        "lat": 42.21213861393716,
-        "lng": -0.5344430205369766
+        "lat": 34.542762387234845,
+        "lng": -1.6094065886405253
       }
     }
   ]

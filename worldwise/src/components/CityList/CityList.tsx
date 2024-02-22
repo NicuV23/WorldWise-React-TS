@@ -1,9 +1,8 @@
-import Spinner from "../Spinner/Spinner";
 import styles from "./CityList.module.css";
 import CityItem from "../CityItem/CityItem";
-import Message from "../Message/Message";
 import { useCities } from "../../contexts/CitiesContext";
 import React from "react";
+import LoadingScreen from "../loadingScreen/loadingScreen";
 function CityList() {
   const { cities, isLoading, deleteCity } = useCities();
 
@@ -11,30 +10,26 @@ function CityList() {
     deleteCity(id);
   };
 
-  if (isLoading) {
-    return <Spinner />;
-  }
-
-  if (!cities.length) {
-    return (
-      <Message message="Add your first city by clicking on a city on the map" />
-    );
-  }
-
   return (
-    <ul className={styles.cityList}>
-      {cities.map((city) => (
-        <CityItem
-          onDelete={handleDelete}
-          id={city.id}
-          cityName={city.cityName || ""}
-          emoji={city.emoji || ""}
-          date={city.date || ""}
-          notes={city.notes || ""}
-          key={city.id}
-        />
-      ))}
-    </ul>
+    <LoadingScreen isLoading={isLoading} length={cities.length}>
+      <ul className={styles.cityList}>
+        {cities.map((city) => (
+          <CityItem
+            onDelete={handleDelete}
+            id={city?.id || 0}
+            cityName={city.cityName || ""}
+            emoji={city.country || ""}
+            date={city.date || null}
+            notes={city.notes || ""}
+            key={city.id}
+            position={{
+              lat: city?.position?.lat || 0,
+              lng: city.position?.lng || 0,
+            }}
+          />
+        ))}
+      </ul>
+    </LoadingScreen>
   );
 }
 

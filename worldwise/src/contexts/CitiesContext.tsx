@@ -10,13 +10,17 @@ import React, {
 
 const BASE_URL = "http://localhost:9000";
 
-interface City {
-  country: string | undefined;
-  id: number;
+export interface City {
+  country?: string | undefined;
+  id?: number;
   cityName?: string;
   emoji?: string;
-  date?: string;
+  date?: Date | null;
   notes?: string;
+  position?: {
+    lat: number;
+    lng: number;
+  };
 }
 
 interface CitiesState {

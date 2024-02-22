@@ -1,55 +1,51 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./CityItem.module.css";
-
-interface CountryCodes {
-  [key: string]: string;
-}
-
-import countryCodes from "../../../data/countryCodes.json";
+import { getFlagImageUrl } from "../../utils/getFlagImageUrl";
 
 interface CityItemProps {
   id: number;
   cityName: string;
   emoji: string;
-  date: string;
+  date: Date | null;
   notes: string;
+  position?: {
+    lat: number;
+    lng: number;
+  };
   onDelete: (id: number) => void;
-  countryCode: string;
 }
 
-const formattedDate = (date: string | undefined) =>
-  date
-    ? new Intl.DateTimeFormat("en", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      }).format(new Date(date))
-    : "";
-
-const getFlagImageUrl = (countryCode: string) => {
-  const countryName = (countryCodes as CountryCodes)[countryCode.toLowerCase()];
-
-  return `https://flagcdn.com/16x12/${countryName}.png`;
-};
+// const formattedDate = (date: Date | null) =>
+//   date
+//     ? new Intl.DateTimeFormat("en", {
+//         day: "numeric",
+//         month: "long",
+//         year: "numeric",
+//       }).format(date)
+//     : "";
 
 function CityItem({
   id,
   cityName,
   emoji,
-  date,
+  // date,
   notes,
   onDelete,
-  countryCode,
 }: CityItemProps) {
-  const formattedDateString = formattedDate(date);
+  // const formattedDateString = formattedDate(date);
   const navigate = useNavigate();
 
-  const flagImageUrl = getFlagImageUrl(countryCode);
+  const flagImageUrl = getFlagImageUrl(emoji);
 
   return (
     <div className={styles.cityItem}>
-      <div className={styles.group} onClick={() => navigate(`${id}`)}>
+      <div
+        className={styles.group}
+        onClick={() => {
+          navigate(`${id}`);
+        }}
+      >
         <div>
           <img
             src={flagImageUrl}
@@ -60,7 +56,7 @@ function CityItem({
           />
           <h2 className={styles.name}>{cityName}</h2>
         </div>
-        <p className={styles.date}>({formattedDateString})</p>{" "}
+        <p className={styles.date}>(test)</p>{" "}
         <p className={styles.notes}>{notes}</p>
         <Link to={`/cities/${id}`} className={styles.link}></Link>
       </div>

@@ -9,21 +9,11 @@ import {
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import styles from "./Map.module.css";
-import { useCities } from "../../contexts/CitiesContext";
+import { City, useCities } from "../../contexts/CitiesContext";
 import Button from "../Button/Button";
 import React, { useEffect, useState } from "react";
 import { useGeolocation } from "../../hooks/useGeolocation";
 import { useUrlPosition } from "../../hooks/useUrlPosition";
-
-interface City {
-  id: string;
-  position: {
-    lat: number;
-    lng: number;
-  };
-  emoji: string;
-  cityName: string;
-}
 
 function Map(): JSX.Element {
   const { cities } = useCities();
@@ -62,17 +52,19 @@ function Map(): JSX.Element {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
         />
-        {cities.map((city: City) => (
-          <Marker
-            position={[city.position.lat, city.position.lng]}
-            key={city.id}
-          >
-            <Popup>
-              <span>{city.emoji}</span> <span>{city.cityName}</span>
-            </Popup>
-          </Marker>
-        ))}
-
+        {cities.map((city: City) => {
+          console.log([city?.position?.lat, city?.position?.lng]);
+          return (
+            <Marker
+              position={[city?.position?.lat, city?.position?.lng]}
+              key={city.id}
+            >
+              <Popup>
+                <span>{city.emoji}</span> <span>{city.cityName}</span>
+              </Popup>
+            </Marker>
+          );
+        })}
         <ChangeCenter position={mapPosition} />
         <DetectClick />
       </MapContainer>
