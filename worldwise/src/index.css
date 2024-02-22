@@ -25,7 +25,10 @@ html {
 }
 
 body {
-  font-family: "Manrope", sans-serif;
+  font-family: "Noto Color Emoji", "Segoe UI Emoji", sans-serif;
+}
+
+body {
   color: var(--color-light--2);
   font-weight: 400;
   line-height: 1.6;

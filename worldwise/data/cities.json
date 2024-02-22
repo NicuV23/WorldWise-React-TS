@@ -1,51 +1,75 @@
 {
   "cities": [
     {
-      "id": "0897",
-      "cityName": "Yabluniv",
-      "country": "Ukraine",
-      "emoji": "🇺🇦",
-      "date": "2024-02-22T10:18:36.557Z",
+      "id": "7201",
+      "cityName": "San Remo",
+      "country": "Italy",
+      "emoji": "🇮🇹",
+      "date": "2024-02-22T10:42:08.179Z",
       "notes": "",
       "position": {
-        "lat": 48.37169412630092,
-        "lng": 24.864896337286776
+        "lat": 43.8028187190472,
+        "lng": 7.748786723794391
       }
     },
     {
-      "id": "805a",
-      "cityName": "Svislach",
-      "country": "Belarus",
-      "emoji": "🇧🇾",
-      "date": "2024-02-22T10:18:42.038Z",
+      "id": "29d3",
+      "cityName": "Al Khums",
+      "country": "Libya",
+      "emoji": "🇱🇾",
+      "date": "2024-02-22T11:01:30.525Z",
       "notes": "",
       "position": {
-        "lat": 53.042695740494274,
-        "lng": 24.02982374858525
+        "lat": 32.58384932565662,
+        "lng": 13.386414635105975
       }
     },
     {
-      "id": "5e1d",
-      "cityName": "Ragana",
-      "country": "Latvia",
-      "emoji": "🇱🇻",
-      "date": "2024-02-22T10:23:11.096Z",
+      "id": "07d0",
+      "cityName": "Senanga District",
+      "country": "Zambia",
+      "emoji": "🇿🇲",
+      "date": "2024-02-22T11:01:37.528Z",
       "notes": "",
       "position": {
-        "lat": 57.25664777933676,
-        "lng": 24.85897882360459
+        "lat": -15.623036831528252,
+        "lng": 24.0705986336328
       }
     },
     {
-      "id": "466e",
-      "cityName": "Castellote",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2024-02-22T10:31:17.546Z",
+      "id": "04ee",
+      "cityName": "Ankadinondry-Sakay",
+      "country": "Madagascar",
+      "emoji": "🇲🇬",
+      "date": "2024-02-22T11:01:50.897Z",
       "notes": "",
       "position": {
-        "lat": 40.68259389971881,
-        "lng": -0.2892173696996348
+        "lat": -18.895892559415024,
+        "lng": 46.46782939087839
+      }
+    },
+    {
+      "id": "7e5e",
+      "cityName": "Talmaciu",
+      "country": "Romania",
+      "emoji": "🇷🇴",
+      "date": "2024-02-22T11:11:21.166Z",
+      "notes": "",
+      "position": {
+        "lat": 45.55252525134013,
+        "lng": 23.90236818079021
+      }
+    },
+    {
+      "id": "4103",
+      "cityName": "Chivasso",
+      "country": "Italy",
+      "emoji": "🇮🇹",
+      "date": "2024-02-22T11:11:39.613Z",
+      "notes": "vn",
+      "position": {
+        "lat": 45.182036837015886,
+        "lng": 7.951182596619036
       }
     }
   ]
