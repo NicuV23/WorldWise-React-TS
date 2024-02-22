@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./CountryItem.module.css";
 
 interface CountryItemProps {
   country: {
@@ -10,9 +11,12 @@ interface CountryItemProps {
 
 const CountryItem: React.FC<CountryItemProps> = ({ country, key }) => {
   return (
-    <li key={key}>
-      {country.country} {country.emoji && <span>{country.emoji}</span>}
-    </li>
+    <div className={styles.countryItem}>
+      <li key={key}>
+        {country.country}{" "}
+        {country.emoji && <span className={styles.emoji}>{country.emoji}</span>}
+      </li>
+    </div>
   );
 };
 

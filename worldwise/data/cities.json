@@ -1,27 +1,51 @@
 {
   "cities": [
     {
-      "id": "ed9a",
-      "cityName": "Neuvy-Saint-Sepulchre",
-      "country": "France",
-      "emoji": "🇫🇷",
-      "date": "2024-02-22T10:14:08.449Z",
-      "notes": "e",
+      "id": "0897",
+      "cityName": "Yabluniv",
+      "country": "Ukraine",
+      "emoji": "🇺🇦",
+      "date": "2024-02-22T10:18:36.557Z",
+      "notes": "",
       "position": {
-        "lat": 46.604167162931844,
-        "lng": 1.7773020081915463
+        "lat": 48.37169412630092,
+        "lng": 24.864896337286776
       }
     },
     {
-      "id": "13a0",
-      "cityName": "London",
-      "country": "United Kingdom of Great Britain and Northern Ireland (the)",
-      "emoji": "🇬🇧",
-      "date": "2024-02-22T10:14:14.388Z",
-      "notes": "q",
+      "id": "805a",
+      "cityName": "Svislach",
+      "country": "Belarus",
+      "emoji": "🇧🇾",
+      "date": "2024-02-22T10:18:42.038Z",
+      "notes": "",
       "position": {
-        "lat": 51.41291212935532,
-        "lng": -0.09102243214313967
+        "lat": 53.042695740494274,
+        "lng": 24.02982374858525
+      }
+    },
+    {
+      "id": "5e1d",
+      "cityName": "Ragana",
+      "country": "Latvia",
+      "emoji": "🇱🇻",
+      "date": "2024-02-22T10:23:11.096Z",
+      "notes": "",
+      "position": {
+        "lat": 57.25664777933676,
+        "lng": 24.85897882360459
+      }
+    },
+    {
+      "id": "466e",
+      "cityName": "Castellote",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2024-02-22T10:31:17.546Z",
+      "notes": "",
+      "position": {
+        "lat": 40.68259389971881,
+        "lng": -0.2892173696996348
       }
     }
   ]
