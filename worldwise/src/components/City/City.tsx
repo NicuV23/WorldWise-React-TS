@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useCities } from "../contexts/CitiesContext";
-import BackButton from "./BackButton";
+import { useCities } from "../../contexts/CitiesContext";
+import BackButton from "../BackButton";
 import styles from "./City.module.css";
-import Spinner from "./Spinner";
+import Spinner from "../Spinner/Spinner";
 
 function City() {
   const { id } = useParams();
-  console.log("aici e id", id);
   const { getCity, currentCity, isLoading } = useCities();
 
   useEffect(() => {

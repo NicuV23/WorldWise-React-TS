@@ -9,11 +9,11 @@ import {
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import styles from "./Map.module.css";
-import { useCities } from "../contexts/CitiesContext";
-import Button from "./Button";
+import { useCities } from "../../contexts/CitiesContext";
+import Button from "../Button/Button";
 import React, { useEffect, useState } from "react";
-import { useGeolocation } from "../hooks/useGeolocation";
-import { useUrlPosition } from "../hooks/useUrlPosition";
+import { useGeolocation } from "../../hooks/useGeolocation";
+import { useUrlPosition } from "../../hooks/useUrlPosition";
 
 interface City {
   id: string;

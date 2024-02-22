@@ -1,42 +1,6 @@
 {
   "cities": [
     {
-      "id": "07d0",
-      "cityName": "Senanga District",
-      "country": "Zambia",
-      "emoji": "🇿🇲",
-      "date": "2024-02-22T11:01:37.528Z",
-      "notes": "",
-      "position": {
-        "lat": -15.623036831528252,
-        "lng": 24.0705986336328
-      }
-    },
-    {
-      "id": "4103",
-      "cityName": "Chivasso",
-      "country": "Italy",
-      "emoji": "🇮🇹",
-      "date": "2024-02-22T11:11:39.613Z",
-      "notes": "vn",
-      "position": {
-        "lat": 45.182036837015886,
-        "lng": 7.951182596619036
-      }
-    },
-    {
-      "id": "868e",
-      "cityName": "Madrid",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2024-02-22T16:14:40.665Z",
-      "notes": "c",
-      "position": {
-        "lat": 40.43022363450862,
-        "lng": -3.6267551935247293
-      }
-    },
-    {
       "id": "a111",
       "cityName": "la Massana",
       "country": "Andorra",
@@ -46,6 +10,54 @@
       "position": {
         "lat": 42.52069952914966,
         "lng": 1.4894682525307925
+      }
+    },
+    {
+      "id": "bac6",
+      "cityName": "Balearic Sea",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2024-02-22T16:23:18.691Z",
+      "notes": "",
+      "position": {
+        "lat": 38.80836885800413,
+        "lng": 0.43230744810073063
+      }
+    },
+    {
+      "id": "541c",
+      "cityName": "Figuig",
+      "country": "Morocco",
+      "emoji": "🇲🇦",
+      "date": "2024-02-22T16:23:26.188Z",
+      "notes": "",
+      "position": {
+        "lat": 33.0352542966988,
+        "lng": -2.106472068759671
+      }
+    },
+    {
+      "id": "5d1b",
+      "cityName": "Zuera",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2024-02-22T17:42:08.734Z",
+      "notes": "",
+      "position": {
+        "lat": 41.93631417830425,
+        "lng": -0.8356308447093054
+      }
+    },
+    {
+      "id": "eb1c",
+      "cityName": "Sotonera, La",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2024-02-22T17:54:35.894Z",
+      "notes": "",
+      "position": {
+        "lat": 42.21213861393716,
+        "lng": -0.5344430205369766
       }
     }
   ]
