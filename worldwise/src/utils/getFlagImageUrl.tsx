@@ -1,6 +1,6 @@
 import countryCodes from "../../data/countryCodes.json";
 
-interface CountryCodes {
+export interface CountryCodes {
   [key: string]: string;
 }
 

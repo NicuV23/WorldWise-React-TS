@@ -40,7 +40,6 @@ function Form() {
           throw new Error(
             "That doesn't seem to be a city. Click somewhere else 😉"
           );
-        console.log(lat, lng);
 
         const newCity = {
           country: data.countryName,

@@ -14,8 +14,18 @@ import Button from "../Button/Button";
 import React, { useEffect, useState } from "react";
 import { useGeolocation } from "../../hooks/useGeolocation";
 import { useUrlPosition } from "../../hooks/useUrlPosition";
+import { CountryCodes, getFlagImageUrl } from "../../utils/getFlagImageUrl";
 
-function Map(): JSX.Element {
+interface countryName {
+  countryName: string;
+}
+
+const Map: React.FC<countryName> = ({ countryName }) => {
+  const countryCodes: CountryCodes = require("../../data/countryCodes.json");
+
+  const countryCode = countryCodes[countryName];
+  const flagImageUrl = getFlagImageUrl(countryCode);
+
   const { cities } = useCities();
   const [mapPosition, setMapPosition] = useState<[number, number]>([40, 0]);
   const {
@@ -53,14 +63,20 @@ function Map(): JSX.Element {
           url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
         />
         {cities.map((city: City) => {
-          console.log([city?.position?.lat, city?.position?.lng]);
           return (
             <Marker
               position={[city?.position?.lat, city?.position?.lng]}
               key={city.id}
             >
               <Popup>
-                <span>{city.emoji}</span> <span>{city.cityName}</span>
+                <img
+                  src={flagImageUrl}
+                  srcSet={`${flagImageUrl} 2x, ${flagImageUrl} 3x`}
+                  width="30"
+                  height="19"
+                  alt={countryName}
+                />
+                <span>{city.cityName}</span>
               </Popup>
             </Marker>
           );
@@ -70,19 +86,19 @@ function Map(): JSX.Element {
       </MapContainer>
     </div>
   );
-}
+};
 
 interface ChangeCenterProps {
   position: [number, number];
 }
 
-function ChangeCenter({ position }: ChangeCenterProps): JSX.Element {
+function ChangeCenter({ position }: ChangeCenterProps) {
   const map = useMap();
   map.setView(position);
   return null;
 }
 
-function DetectClick(): JSX.Element {
+function DetectClick() {
   const navigate = useNavigate();
 
   useMapEvents({

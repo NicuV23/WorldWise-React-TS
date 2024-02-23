@@ -43,7 +43,7 @@ function CityItem({
   id,
   cityName,
   emoji,
-  // date,
+  date,
   notes,
   onDelete,
 }: CityItemProps) {
@@ -64,13 +64,13 @@ function CityItem({
           <img
             src={flagImageUrl}
             srcSet={`${flagImageUrl} 2x, ${flagImageUrl} 3x`}
-            width="16"
-            height="12"
+            width="23"
+            height="16"
             alt={emoji}
           />
           <h2 className={styles.name}>{cityName}</h2>
         </div>
-        <p className={styles.date}>(test)</p>{" "}
+        <p className={styles.date}>({formattedDate(date)})</p>{" "}
         <p className={styles.notes}>{notes}</p>
         <Link to={`/cities/${id}`} className={styles.link}></Link>
       </div>

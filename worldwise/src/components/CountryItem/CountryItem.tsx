@@ -14,10 +14,11 @@ const CountryItem: React.FC<CountryItemProps> = ({ countryName }) => {
       <li key={countryName}>
         {countryName}
         <img
+          className={styles.flagImg}
           src={flagImageUrl}
           srcSet={`${flagImageUrl} 2x, ${flagImageUrl} 3x`}
-          width="16"
-          height="12"
+          width="30"
+          height="19"
           alt={countryName}
         />
       </li>
