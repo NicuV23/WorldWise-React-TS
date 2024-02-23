@@ -4,7 +4,11 @@ import Logo from "../Logo/Logo";
 import styles from "./Sidebar.module.css";
 import React from "react";
 
-function Sidebar() {
+interface SidebarProps {
+  onCountryChange: (newCountry: string) => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = () => {
   return (
     <div className={styles.sidebar}>
       <Logo />
@@ -19,6 +23,6 @@ function Sidebar() {
       </footer>
     </div>
   );
-}
+};
 
 export default Sidebar;

@@ -1,75 +1,39 @@
 {
   "cities": [
     {
-      "id": "12a7",
-      "country": "Poland",
-      "cityName": "Lomazy",
-      "emoji": "PL",
-      "date": "2024-02-23T16:19:41.789Z",
-      "notes": "",
-      "position": {
-        "lat": 51.91797883352262,
-        "lng": 23.091810253129825
-      }
-    },
-    {
-      "id": "9d3c",
+      "id": "34f1",
       "country": "Spain",
-      "cityName": "Cuenca",
+      "cityName": "Torrejon de Ardoz",
       "emoji": "ES",
-      "date": "2024-02-23T16:38:08.449Z",
+      "date": "2024-02-23T18:28:09.163Z",
       "notes": "",
       "position": {
-        "lat": 40.463666324587685,
-        "lng": -1.914965742155295
+        "lat": 40.49709237269567,
+        "lng": -3.452109096922889
       }
     },
     {
-      "id": "fa08",
+      "id": "ea67",
+      "country": "France",
+      "cityName": "Aureville",
+      "emoji": "FR",
+      "date": "2024-02-23T18:30:41.088Z",
+      "notes": "",
+      "position": {
+        "lat": 43.48481212891603,
+        "lng": 1.4674955962807923
+      }
+    },
+    {
+      "id": "3723",
       "country": "Romania",
-      "cityName": "Daia Romana",
+      "cityName": "Lunca Muresului",
       "emoji": "RO",
-      "date": "2024-02-23T16:38:51.969Z",
+      "date": "2024-02-23T18:30:53.513Z",
       "notes": "",
       "position": {
-        "lat": 46.00626253613706,
-        "lng": 23.665895408375405
-      }
-    },
-    {
-      "id": "c5a0",
-      "country": "Spain",
-      "cityName": "Mahora",
-      "emoji": "ES",
-      "date": "2024-02-23T16:43:45.330Z",
-      "notes": "",
-      "position": {
-        "lat": 39.232253141714914,
-        "lng": -1.7589002884007754
-      }
-    },
-    {
-      "id": "623b",
-      "country": "Algeria",
-      "cityName": "’Ain Mahdi",
-      "emoji": "DZ",
-      "date": "2024-02-23T16:48:08.125Z",
-      "notes": "",
-      "position": {
-        "lat": 33.211116472416855,
-        "lng": 2.6142377897172557
-      }
-    },
-    {
-      "id": "2414",
-      "country": "Romania",
-      "cityName": "Miercurea Sibiului",
-      "emoji": "RO",
-      "date": "2024-02-23T16:48:46.429Z",
-      "notes": "",
-      "position": {
-        "lat": 45.84410779560204,
-        "lng": 23.771041918457605
+        "lat": 46.437856895024204,
+        "lng": 23.8802630954207
       }
     }
   ]

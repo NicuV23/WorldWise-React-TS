@@ -14,6 +14,7 @@ const CountryItem: React.FC<CountryItemProps> = ({ countryName }) => {
       <li key={countryName}>
         {countryName}
         <img
+          key={countryName}
           className={styles.flagImg}
           src={flagImageUrl}
           srcSet={`${flagImageUrl} 2x, ${flagImageUrl} 3x`}

@@ -14,17 +14,14 @@ import Button from "../Button/Button";
 import React, { useEffect, useState } from "react";
 import { useGeolocation } from "../../hooks/useGeolocation";
 import { useUrlPosition } from "../../hooks/useUrlPosition";
-import { CountryCodes, getFlagImageUrl } from "../../utils/getFlagImageUrl";
+import { getFlagImageUrl } from "../../utils/getFlagImageUrl";
 
 interface countryName {
   countryName: string;
 }
 
 const Map: React.FC<countryName> = ({ countryName }) => {
-  const countryCodes: CountryCodes = require("../../data/countryCodes.json");
-
-  const countryCode = countryCodes[countryName];
-  const flagImageUrl = getFlagImageUrl(countryCode);
+  console.log(countryName);
 
   const { cities } = useCities();
   const [mapPosition, setMapPosition] = useState<[number, number]>([40, 0]);
@@ -62,25 +59,27 @@ const Map: React.FC<countryName> = ({ countryName }) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
         />
-        {cities.map((city: City) => {
-          return (
-            <Marker
-              position={[city?.position?.lat, city?.position?.lng]}
-              key={city.id}
-            >
-              <Popup>
-                <img
-                  src={flagImageUrl}
-                  srcSet={`${flagImageUrl} 2x, ${flagImageUrl} 3x`}
-                  width="30"
-                  height="19"
-                  alt={countryName}
-                />
-                <span>{city.cityName}</span>
-              </Popup>
-            </Marker>
-          );
-        })}
+        {cities.map((city: City) => (
+          <Marker
+            position={[city?.position.lat, city?.position.lng]}
+            key={city.id}
+          >
+            <Popup>
+              <img
+                className={styles.flagImg}
+                src={getFlagImageUrl(countryName)}
+                srcSet={`${getFlagImageUrl(countryName)} 2x, ${getFlagImageUrl(
+                  countryName
+                )} 3x`}
+                width="30"
+                height="19"
+                alt={countryName}
+              />
+              <span>{city.cityName}</span>
+            </Popup>
+          </Marker>
+        ))}
+
         <ChangeCenter position={mapPosition} />
         <DetectClick />
       </MapContainer>
