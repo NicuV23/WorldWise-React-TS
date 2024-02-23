@@ -23,6 +23,18 @@
         "lat": 34.542762387234845,
         "lng": -1.6094065886405253
       }
+    },
+    {
+      "id": "fdbf",
+      "country": "Spain",
+      "cityName": "Callosa d'En Sarria",
+      "emoji": "ES",
+      "date": "2024-02-23T12:21:18.764Z",
+      "notes": "\nd",
+      "position": {
+        "lat": 38.637022313010846,
+        "lng": -0.11421767811048425
+      }
     }
   ]
 }
