@@ -1,51 +1,75 @@
 {
   "cities": [
     {
-      "id": "0cb6",
+      "id": "612d",
+      "country": "Algeria",
+      "cityName": "Lardjem",
+      "countryCode": "DZ",
+      "date": "2024-02-24T22:25:09.200Z",
+      "notes": "",
+      "position": {
+        "lat": 35.75373407913881,
+        "lng": 1.6098987894766736
+      }
+    },
+    {
+      "id": "9ac0",
       "country": "France",
-      "cityName": "Saint-Laurent-Medoc",
+      "cityName": "Bareges",
       "countryCode": "FR",
-      "date": "2024-02-24T22:03:30.079Z",
-      "notes": "",
+      "date": "2024-02-24T22:30:35.228Z",
+      "notes": "super",
       "position": {
-        "lat": 45.161465125708276,
-        "lng": -0.8516306919500052
+        "lat": 42.89293745124388,
+        "lng": 0.12625337742246948
       }
     },
     {
-      "id": "bff8",
+      "id": "cf10",
       "country": "Spain",
-      "cityName": "Alcaniz",
+      "cityName": "Sastago",
       "countryCode": "ES",
-      "date": "2024-02-24T22:20:18.434Z",
+      "date": "2024-02-24T22:38:18.692Z",
       "notes": "",
       "position": {
-        "lat": 41.11421065766247,
-        "lng": -0.1554920340062749
-      }
-    },
-    {
-      "id": "1cda",
-      "country": "France",
-      "cityName": "Saint-Plancard",
-      "countryCode": "FR",
-      "date": "2024-02-24T22:20:36.793Z",
-      "notes": "",
-      "position": {
-        "lat": 43.15033844448954,
-        "lng": 0.5459052246780695
-      }
-    },
-    {
-      "id": "7fc5",
-      "country": "Spain",
-      "cityName": "Segorbe",
-      "countryCode": "ES",
-      "date": "2024-02-24T22:21:37.780Z",
-      "notes": "",
-      "position": {
-        "lat": 39.77717813866354,
+        "lat": 41.29596937727955,
         "lng": -0.39841074374032953
+      }
+    },
+    {
+      "id": "577b",
+      "country": "Spain",
+      "cityName": "Sotillo de la Ribera",
+      "countryCode": "ES",
+      "date": "2024-02-24T22:42:42.481Z",
+      "notes": "",
+      "position": {
+        "lat": 41.80407814427237,
+        "lng": -3.803509432151718
+      }
+    },
+    {
+      "id": "85c6",
+      "country": "Spain",
+      "cityName": "Tejadillos",
+      "countryCode": "ES",
+      "date": "2024-02-24T22:43:48.911Z",
+      "notes": "",
+      "position": {
+        "lat": 40.1452892956766,
+        "lng": -1.606493393578743
+      }
+    },
+    {
+      "id": "9b7b",
+      "country": "Spain",
+      "cityName": "Jarafuel",
+      "countryCode": "ES",
+      "date": "2024-02-24T22:46:28.574Z",
+      "notes": "",
+      "position": {
+        "lat": 39.14710270770074,
+        "lng": -1.1909057581696094
       }
     }
   ]

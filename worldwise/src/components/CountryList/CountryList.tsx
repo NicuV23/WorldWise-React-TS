@@ -11,7 +11,11 @@ const CountryList: React.FC = () => {
     <LoadingScreen isLoading={isLoading} length={cities.length}>
       <ul className={styles.countryList}>
         {cities.map((country) => (
-          <CountryItem countryName={country.country || ""} />
+          <CountryItem
+            key={country.cityName}
+            countryName={country.country || ""}
+            countryCode={country.countryCode || ""}
+          />
         ))}
       </ul>
     </LoadingScreen>

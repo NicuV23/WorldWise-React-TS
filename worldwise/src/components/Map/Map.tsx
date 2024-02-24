@@ -14,7 +14,7 @@ import Button from "../Button/Button";
 import React, { useEffect, useState } from "react";
 import { useGeolocation } from "../../hooks/useGeolocation";
 import { useUrlPosition } from "../../hooks/useUrlPosition";
-import { getFlagImageUrl } from "../../utils/getFlagImageUrl";
+import FlagImage from "../flagImage";
 
 interface countryCode {
   countryCode: string;
@@ -61,20 +61,13 @@ const Map: React.FC<countryCode> = ({ countryCode }) => {
         />
         {cities.map((city: City) => (
           <Marker
-            position={[city?.position.lat, city?.position.lng]}
+            position={
+              city?.position ? [city.position.lat, city.position.lng] : [0, 0]
+            }
             key={city.id}
           >
             <Popup>
-              <img
-                className={styles.flagImg}
-                src={getFlagImageUrl(countryCode)}
-                srcSet={`${getFlagImageUrl(countryCode)} 2x, ${getFlagImageUrl(
-                  countryCode
-                )} 3x`}
-                width="30"
-                height="19"
-                alt={countryCode}
-              />
+              <FlagImage countryCode={"ro"} />
               <span>{city.cityName}</span>
             </Popup>
           </Marker>

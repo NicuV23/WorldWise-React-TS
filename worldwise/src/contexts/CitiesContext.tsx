@@ -17,10 +17,12 @@ export interface City {
   countryCode?: string;
   date?: Date | null;
   notes?: string;
-  position?: {
-    lat: number;
-    lng: number;
-  };
+  position?:
+    | {
+        lat: number;
+        lng: number;
+      }
+    | undefined;
 }
 
 interface CitiesState {

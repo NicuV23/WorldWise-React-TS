@@ -1,8 +1,9 @@
 import styles from "./CityList.module.css";
 import CityItem from "../CityItem/CityItem";
 import { useCities } from "../../contexts/CitiesContext";
-import React from "react";
+import React, { useMemo } from "react";
 import LoadingScreen from "../loadingScreen/loadingScreen";
+
 function CityList() {
   const { cities, isLoading, deleteCity } = useCities();
 
@@ -10,25 +11,28 @@ function CityList() {
     deleteCity(id);
   };
 
-  return (
-    <LoadingScreen isLoading={isLoading} length={cities.length}>
+  const memoizedCityList = useMemo(() => {
+    return (
       <ul className={styles.cityList}>
         {cities.map((city) => (
           <CityItem
             onDelete={handleDelete}
             id={city?.id || 0}
             cityName={city.cityName || ""}
-            emoji={city.country || ""}
+            countryCode={city.countryCode || ""}
             date={city.date || null}
             notes={city.notes || ""}
             key={city.id}
-            position={{
-              lat: city?.position?.lat || 0,
-              lng: city.position?.lng || 0,
-            }}
+            country={undefined}
           />
         ))}
       </ul>
+    );
+  }, [cities, handleDelete]);
+
+  return (
+    <LoadingScreen isLoading={isLoading} length={cities.length}>
+      {memoizedCityList}
     </LoadingScreen>
   );
 }
