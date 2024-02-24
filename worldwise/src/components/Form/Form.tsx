@@ -13,11 +13,7 @@ import FlagImage from "../flagImage";
 
 const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 
-interface countryCode {
-  countryCode: string;
-}
-
-const Form: React.FC<countryCode> = ({ countryCode }) => {
+const Form: React.FC = () => {
   const [lat, lng] = useUrlPosition();
   const { createCity, isLoading } = useCities();
   const navigate = useNavigate();
@@ -106,7 +102,7 @@ const Form: React.FC<countryCode> = ({ countryCode }) => {
           value={city?.cityName}
         />
         <span className={styles.flag}>
-          <FlagImage countryCode={countryCode} />
+          <FlagImage countryCode={city?.countryCode || ""} />
         </span>
       </div>
 

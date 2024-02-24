@@ -38,7 +38,7 @@ function CityItem({
         }}
       >
         <div>
-          <FlagImage countryCode={countryCode} />
+          <FlagImage countryCode={countryCode || ""} />
           <h2 className={styles.name}>{cityName}</h2>
         </div>
         <p className={styles.date}>({formattedDate(date)})</p>

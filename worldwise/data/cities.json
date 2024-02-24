@@ -1,18 +1,6 @@
 {
   "cities": [
     {
-      "id": "7284",
-      "country": "Spain",
-      "cityName": "Lanaja",
-      "countryCode": "ES",
-      "date": "2024-02-24T21:53:14.155Z",
-      "notes": "",
-      "position": {
-        "lat": 41.80547983965504,
-        "lng": -0.35284723072188673
-      }
-    },
-    {
       "id": "0cb6",
       "country": "France",
       "cityName": "Saint-Laurent-Medoc",
@@ -22,6 +10,42 @@
       "position": {
         "lat": 45.161465125708276,
         "lng": -0.8516306919500052
+      }
+    },
+    {
+      "id": "bff8",
+      "country": "Spain",
+      "cityName": "Alcaniz",
+      "countryCode": "ES",
+      "date": "2024-02-24T22:20:18.434Z",
+      "notes": "",
+      "position": {
+        "lat": 41.11421065766247,
+        "lng": -0.1554920340062749
+      }
+    },
+    {
+      "id": "1cda",
+      "country": "France",
+      "cityName": "Saint-Plancard",
+      "countryCode": "FR",
+      "date": "2024-02-24T22:20:36.793Z",
+      "notes": "",
+      "position": {
+        "lat": 43.15033844448954,
+        "lng": 0.5459052246780695
+      }
+    },
+    {
+      "id": "7fc5",
+      "country": "Spain",
+      "cityName": "Segorbe",
+      "countryCode": "ES",
+      "date": "2024-02-24T22:21:37.780Z",
+      "notes": "",
+      "position": {
+        "lat": 39.77717813866354,
+        "lng": -0.39841074374032953
       }
     }
   ]
