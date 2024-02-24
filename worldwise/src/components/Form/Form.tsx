@@ -9,6 +9,7 @@ import Message from "../Message/Message";
 import Spinner from "../Spinner/Spinner";
 import { City, useCities } from "../../contexts/CitiesContext";
 import { useNavigate } from "react-router-dom";
+import { getFlagImageUrl } from "../../utils/getFlagImageUrl";
 
 const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 
@@ -44,7 +45,7 @@ function Form() {
         const newCity = {
           country: data.countryName,
           cityName: data.city || data.locality,
-          emoji: data.countryCode,
+          countryCode: data.countryCode,
           date: new Date(),
           notes: "",
           position: { lat, lng },
@@ -100,7 +101,16 @@ function Form() {
           }
           value={city?.cityName}
         />
-        <span className={styles.flag}>{city?.emoji}</span>
+        <span className={styles.flag}>
+          {city?.countryCode && (
+            <img
+              src={getFlagImageUrl(city?.countryCode)}
+              alt={city?.country}
+              width="16"
+              height="12"
+            />
+          )}
+        </span>
       </div>
 
       <div className={styles.row}>

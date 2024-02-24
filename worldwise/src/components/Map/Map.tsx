@@ -16,12 +16,12 @@ import { useGeolocation } from "../../hooks/useGeolocation";
 import { useUrlPosition } from "../../hooks/useUrlPosition";
 import { getFlagImageUrl } from "../../utils/getFlagImageUrl";
 
-interface countryName {
-  countryName: string;
+interface countryCode {
+  countryCode: string;
 }
 
-const Map: React.FC<countryName> = ({ countryName }) => {
-  console.log(countryName);
+const Map: React.FC<countryCode> = ({ countryCode }) => {
+  console.log(countryCode);
 
   const { cities } = useCities();
   const [mapPosition, setMapPosition] = useState<[number, number]>([40, 0]);
@@ -67,13 +67,13 @@ const Map: React.FC<countryName> = ({ countryName }) => {
             <Popup>
               <img
                 className={styles.flagImg}
-                src={getFlagImageUrl(countryName)}
-                srcSet={`${getFlagImageUrl(countryName)} 2x, ${getFlagImageUrl(
-                  countryName
+                src={getFlagImageUrl(countryCode)}
+                srcSet={`${getFlagImageUrl(countryCode)} 2x, ${getFlagImageUrl(
+                  countryCode
                 )} 3x`}
                 width="30"
                 height="19"
-                alt={countryName}
+                alt={countryCode}
               />
               <span>{city.cityName}</span>
             </Popup>

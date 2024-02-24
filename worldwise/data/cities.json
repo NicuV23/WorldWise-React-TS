@@ -1,3 +1,40 @@
 {
-  "cities": []
+  "cities": [
+    {
+      "id": "a753",
+      "country": "Romania",
+      "cityName": "Calaţele",
+      "countryCode": "RO",
+      "date": "2024-02-24T16:59:45.813Z",
+      "notes": "",
+      "position": {
+        "lat": 46.74152246126582,
+        "lng": 23.069837596879825
+      }
+    },
+    {
+      "id": "b567",
+      "country": "Ukraine",
+      "cityName": "Dovhe",
+      "countryCode": "UA",
+      "date": "2024-02-24T17:06:18.128Z",
+      "notes": "",
+      "position": {
+        "lat": 48.444977960678116,
+        "lng": 23.37243048031004
+      }
+    },
+    {
+      "id": "478e",
+      "country": "Spain",
+      "cityName": "Villanua",
+      "countryCode": "ES",
+      "date": "2024-02-24T17:08:06.454Z",
+      "notes": "",
+      "position": {
+        "lat": 42.68340982081685,
+        "lng": -0.5077157689825684
+      }
+    }
+  ]
 }
