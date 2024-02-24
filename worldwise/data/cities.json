@@ -1,39 +1,27 @@
 {
   "cities": [
     {
-      "id": "a753",
-      "country": "Romania",
-      "cityName": "Calaţele",
-      "countryCode": "RO",
-      "date": "2024-02-24T16:59:45.813Z",
-      "notes": "",
-      "position": {
-        "lat": 46.74152246126582,
-        "lng": 23.069837596879825
-      }
-    },
-    {
-      "id": "b567",
-      "country": "Ukraine",
-      "cityName": "Dovhe",
-      "countryCode": "UA",
-      "date": "2024-02-24T17:06:18.128Z",
-      "notes": "",
-      "position": {
-        "lat": 48.444977960678116,
-        "lng": 23.37243048031004
-      }
-    },
-    {
-      "id": "478e",
+      "id": "7284",
       "country": "Spain",
-      "cityName": "Villanua",
+      "cityName": "Lanaja",
       "countryCode": "ES",
-      "date": "2024-02-24T17:08:06.454Z",
+      "date": "2024-02-24T21:53:14.155Z",
       "notes": "",
       "position": {
-        "lat": 42.68340982081685,
-        "lng": -0.5077157689825684
+        "lat": 41.80547983965504,
+        "lng": -0.35284723072188673
+      }
+    },
+    {
+      "id": "0cb6",
+      "country": "France",
+      "cityName": "Saint-Laurent-Medoc",
+      "countryCode": "FR",
+      "date": "2024-02-24T22:03:30.079Z",
+      "notes": "",
+      "position": {
+        "lat": 45.161465125708276,
+        "lng": -0.8516306919500052
       }
     }
   ]

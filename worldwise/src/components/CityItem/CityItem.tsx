@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./CityItem.module.css";
-import { getFlagImageUrl } from "../../utils/getFlagImageUrl";
 import { formattedDate } from "../../utils/formattedDate";
+import FlagImage from "../flagImage";
 
 interface CityItemProps {
   country: string | undefined;
@@ -21,15 +21,13 @@ interface CityItemProps {
 function CityItem({
   id,
   cityName,
-  countryCode,
   date,
   notes,
+  countryCode,
   onDelete,
 }: CityItemProps) {
   // const formattedDateString = formattedDate(date);
   const navigate = useNavigate();
-
-  const flagImageUrl = getFlagImageUrl(countryCode);
 
   return (
     <div className={styles.cityItem}>
@@ -40,13 +38,7 @@ function CityItem({
         }}
       >
         <div>
-          <img
-            src={flagImageUrl}
-            srcSet={`${flagImageUrl} 2x, ${flagImageUrl} 3x`}
-            width="23"
-            height="16"
-            alt={countryCode}
-          />
+          <FlagImage countryCode={countryCode} />
           <h2 className={styles.name}>{cityName}</h2>
         </div>
         <p className={styles.date}>({formattedDate(date)})</p>

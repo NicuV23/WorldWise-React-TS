@@ -9,11 +9,15 @@ import Message from "../Message/Message";
 import Spinner from "../Spinner/Spinner";
 import { City, useCities } from "../../contexts/CitiesContext";
 import { useNavigate } from "react-router-dom";
-import { getFlagImageUrl } from "../../utils/getFlagImageUrl";
+import FlagImage from "../flagImage";
 
 const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 
-function Form() {
+interface countryCode {
+  countryCode: string;
+}
+
+const Form: React.FC<countryCode> = ({ countryCode }) => {
   const [lat, lng] = useUrlPosition();
   const { createCity, isLoading } = useCities();
   const navigate = useNavigate();
@@ -102,14 +106,7 @@ function Form() {
           value={city?.cityName}
         />
         <span className={styles.flag}>
-          {city?.countryCode && (
-            <img
-              src={getFlagImageUrl(city?.countryCode)}
-              alt={city?.country}
-              width="16"
-              height="12"
-            />
-          )}
+          <FlagImage countryCode={countryCode} />
         </span>
       </div>
 
@@ -139,6 +136,6 @@ function Form() {
       </div>
     </form>
   );
-}
+};
 
 export default Form;
