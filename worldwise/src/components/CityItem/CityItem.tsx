@@ -25,7 +25,7 @@ const CityItem: React.FC<CityItemProps> = ({
   notes,
   countryCode,
   onDelete,
-}: CityItemProps) => {
+}) => {
   const navigate = useNavigate();
 
   return (
