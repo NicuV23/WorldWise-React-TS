@@ -3,7 +3,7 @@ import { useAuth } from "../../contexts/FakeAuthContext";
 import styles from "./User.module.css";
 import React from "react";
 
-function User() {
+const User: React.FC = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -23,6 +23,6 @@ function User() {
       <button onClick={handleClick}>Logout</button>
     </div>
   );
-}
+};
 
 export default User;

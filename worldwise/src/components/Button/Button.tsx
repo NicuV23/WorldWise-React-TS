@@ -7,7 +7,11 @@ interface ButtonProps {
   type?: string;
 }
 
-function Button({ children, onClick, type }: ButtonProps) {
+const Button: React.FC<ButtonProps> = ({
+  children,
+  onClick,
+  type,
+}: ButtonProps) => {
   const buttonClass = type ? styles[type] : "";
   return (
     <button
@@ -19,6 +23,6 @@ function Button({ children, onClick, type }: ButtonProps) {
       {children}
     </button>
   );
-}
+};
 
 export default Button;

@@ -5,7 +5,6 @@ import PageNav from "../../components/pageNav/PageNav";
 import { useAuth } from "../../contexts/FakeAuthContext";
 import styles from "./Login.module.css";
 
-// Adăugați acest tip dacă useAuth returnează ceva cu login și isAuthenticated
 type AuthProps = {
   login: (email: string, password: string) => void;
   isAuthenticated: boolean;
@@ -15,7 +14,6 @@ export default function Login() {
   const [email, setEmail] = useState("jack@example.com");
   const [password, setPassword] = useState("qwerty");
 
-  // Folosiți AuthProps pentru a specifica tipurile pentru login și isAuthenticated
   const { login, isAuthenticated } = useAuth() as AuthProps;
   const navigate = useNavigate();
 

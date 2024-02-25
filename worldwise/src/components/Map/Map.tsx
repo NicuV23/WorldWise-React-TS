@@ -16,11 +16,11 @@ import { useGeolocation } from "../../hooks/useGeolocation";
 import { useUrlPosition } from "../../hooks/useUrlPosition";
 import FlagImage from "../FlagImage";
 
-interface countryCode {
+interface MapProps {
   countryCode: string;
 }
 
-const Map: React.FC<countryCode> = () => {
+const Map: React.FC<MapProps> = () => {
   const { cities } = useCities();
   const [mapPosition, setMapPosition] = useState<[number, number]>([40, 0]);
   const {

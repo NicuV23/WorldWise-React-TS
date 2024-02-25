@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useReducer } from "react";
+import React, {
+  createContext,
+  useContext,
+  useReducer,
+  ReactNode,
+  FC,
+} from "react";
 
 interface AuthState {
   user: {
@@ -29,7 +35,10 @@ const initialState: AuthState = {
   isAuthenticated: false,
 };
 
-function reducer(state: AuthState, action: AuthAction): AuthState {
+const reducer: (state: AuthState, action: AuthAction) => AuthState = (
+  state,
+  action
+) => {
   switch (action.type) {
     case "login":
       return { ...state, user: action.payload, isAuthenticated: true };
@@ -38,7 +47,7 @@ function reducer(state: AuthState, action: AuthAction): AuthState {
     default:
       throw new Error("Unknown action");
   }
-}
+};
 
 const FAKE_USER = {
   name: "Jack",
@@ -47,32 +56,44 @@ const FAKE_USER = {
   avatar: "https://i.pravatar.cc/100?u=zz",
 };
 
-function AuthProvider({ children }: { children: React.ReactNode }) {
+interface AuthProviderProps {
+  children: ReactNode;
+}
+
+const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const [{ user, isAuthenticated }, dispatch] = useReducer(
     reducer,
     initialState
   );
 
-  function login(email: string, password: string) {
+  const login: (email: string, password: string) => void = (
+    email,
+    password
+  ) => {
     if (email === FAKE_USER.email && password === FAKE_USER.password)
       dispatch({ type: "login", payload: FAKE_USER });
-  }
+  };
 
-  function logout() {
+  const logout: () => void = () => {
     dispatch({ type: "logout" });
-  }
+  };
 
   return (
     <AuthContext.Provider value={{ user, isAuthenticated, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
-function useAuth() {
+const useAuth: () => {
+  user: AuthState["user"];
+  isAuthenticated: AuthState["isAuthenticated"];
+  login: (email: string, password: string) => void;
+  logout: () => void;
+} = () => {
   const context = useContext(AuthContext);
   if (!context) throw new Error("AuthContext was used outside AuthProvider");
   return context;
-}
+};
 
 export { AuthProvider, useAuth };

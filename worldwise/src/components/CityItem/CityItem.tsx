@@ -18,14 +18,14 @@ interface CityItemProps {
   onDelete: (id: number) => void;
 }
 
-function CityItem({
+const CityItem: React.FC<CityItemProps> = ({
   id,
   cityName,
   date,
   notes,
   countryCode,
   onDelete,
-}: CityItemProps) {
+}: CityItemProps) => {
   const navigate = useNavigate();
 
   return (
@@ -49,6 +49,6 @@ function CityItem({
       </button>
     </div>
   );
-}
+};
 
 export default CityItem;

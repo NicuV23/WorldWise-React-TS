@@ -6,7 +6,9 @@ interface BackButtonProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement> | (() => void);
 }
 
-function BackButton({ onClick }: BackButtonProps) {
+const BackButton: React.FC<BackButtonProps> = ({
+  onClick,
+}: BackButtonProps) => {
   const navigate = useNavigate();
 
   const handleBackClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -22,6 +24,6 @@ function BackButton({ onClick }: BackButtonProps) {
       &larr; Back
     </Button>
   );
-}
+};
 
 export default BackButton;

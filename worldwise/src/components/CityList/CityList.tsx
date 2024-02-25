@@ -4,7 +4,7 @@ import { useCities } from "../../contexts/CitiesContext";
 import React, { useMemo } from "react";
 import LoadingScreen from "../loadingScreen/LoadingScreen";
 
-function CityList() {
+const CityList: React.FC = () => {
   const { cities, isLoading, deleteCity } = useCities();
 
   const handleDelete = (id: number) => {
@@ -35,6 +35,6 @@ function CityList() {
       {memoizedCityList}
     </LoadingScreen>
   );
-}
+};
 
 export default CityList;

@@ -3,7 +3,7 @@ import Logo from "../logo/Logo";
 import styles from "./PageNav.module.css";
 import React from "react";
 
-function PageNav() {
+const PageNav: React.FC = () => {
   return (
     <nav className={styles.nav}>
       <Logo />
@@ -23,6 +23,6 @@ function PageNav() {
       </ul>
     </nav>
   );
-}
+};
 
 export default PageNav;

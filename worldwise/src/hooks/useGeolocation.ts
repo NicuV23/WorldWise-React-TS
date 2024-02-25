@@ -10,7 +10,7 @@ export function useGeolocation(defaultPosition: Position | null = null) {
   const [position, setPosition] = useState<Position | null>(defaultPosition);
   const [error, setError] = useState<string | null>(null);
 
-  function getPosition() {
+  const getPosition = () => {
     if (!navigator.geolocation) {
       setError("Your browser does not support geolocation");
       return;
@@ -30,7 +30,7 @@ export function useGeolocation(defaultPosition: Position | null = null) {
         setIsLoading(false);
       }
     );
-  }
+  };
 
   return { isLoading, position, error, getPosition };
 }

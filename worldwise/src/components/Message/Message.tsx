@@ -2,15 +2,15 @@ import React from "react";
 import styles from "./Message.module.css";
 
 interface MessageProps {
-  message: string; // sau orice alt tip corespunzător
+  message: string;
 }
 
-function Message({ message }: MessageProps) {
+const Message: React.FC<MessageProps> = ({ message }: MessageProps) => {
   return (
     <p className={styles.message}>
       <span role="img">👋</span> {message}
     </p>
   );
-}
+};
 
 export default Message;

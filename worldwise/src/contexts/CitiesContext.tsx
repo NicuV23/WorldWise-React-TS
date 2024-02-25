@@ -6,6 +6,7 @@ import React, {
   useCallback,
   ReactNode,
   Dispatch,
+  FC,
 } from "react";
 
 const BASE_URL = "http://localhost:9000";
@@ -14,7 +15,7 @@ export interface City {
   country?: string | undefined;
   id?: number;
   cityName?: string;
-  countryCode?: string | undefined;
+  countryCode?: string;
   date?: Date | null;
   notes?: string;
   position?:
@@ -49,7 +50,10 @@ const initialState: CitiesState = {
   error: "",
 };
 
-function reducer(state: CitiesState, action: CitiesAction): CitiesState {
+const reducer: (state: CitiesState, action: CitiesAction) => CitiesState = (
+  state,
+  action
+) => {
   switch (action.type) {
     case "loading":
       return { ...state, isLoading: true };
@@ -78,7 +82,7 @@ function reducer(state: CitiesState, action: CitiesAction): CitiesState {
     default:
       throw new Error("Unknown action type");
   }
-}
+};
 
 interface CitiesContextProps {
   cities: City[];
@@ -95,7 +99,11 @@ const CitiesDispatchContext = createContext<Dispatch<CitiesAction> | null>(
   null
 );
 
-function CitiesProvider({ children }: { children: ReactNode }) {
+interface CitiesProviderProps {
+  children: ReactNode;
+}
+
+const CitiesProvider: FC<CitiesProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
@@ -197,22 +205,22 @@ function CitiesProvider({ children }: { children: ReactNode }) {
       </CitiesDispatchContext.Provider>
     </CitiesContext.Provider>
   );
-}
+};
 
-function useCities() {
+const useCities: () => CitiesContextProps = () => {
   const context = useContext(CitiesContext);
   if (!context)
     throw new Error("CitiesContext was used outside the CitiesProvider");
   return context;
-}
+};
 
-function useCitiesDispatch() {
+const useCitiesDispatch: () => Dispatch<CitiesAction> = () => {
   const dispatch = useContext(CitiesDispatchContext);
   if (!dispatch)
     throw new Error(
       "CitiesDispatchContext was used outside the CitiesProvider"
     );
   return dispatch;
-}
+};
 
 export { CitiesProvider, useCities, useCitiesDispatch };

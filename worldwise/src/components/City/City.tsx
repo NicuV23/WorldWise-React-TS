@@ -6,7 +6,7 @@ import styles from "./City.module.css";
 import Spinner from "../spinner/Spinner";
 import FlagImage from "../FlagImage";
 
-function City() {
+const City: React.FC = () => {
   const { id } = useParams();
   const { getCity, currentCity, isLoading } = useCities();
 
@@ -70,6 +70,6 @@ function City() {
       </div>
     </div>
   );
-}
+};
 
 export default City;
