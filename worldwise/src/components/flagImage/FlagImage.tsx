@@ -1,5 +1,5 @@
 import React from "react";
-import { getFlagImageUrl } from "../utils/GetFlagImageUrl";
+import { getFlagImageUrl } from "../../utils/GetFlagImageUrl";
 
 interface FlagImageProps {
   countryCode: string | undefined;

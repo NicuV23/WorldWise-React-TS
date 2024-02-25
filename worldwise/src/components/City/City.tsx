@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useCities } from "../../contexts/CitiesContext";
-import BackButton from "../BackButton";
+import BackButton from "../backButton/BackButton";
 import styles from "./City.module.css";
 import Spinner from "../spinner/Spinner";
-import FlagImage from "../FlagImage";
+import FlagImage from "../flagImage/FlagImage";
+import { formattedDate } from "../../utils/FormattedDate";
 
 const City: React.FC = () => {
   const { id } = useParams();
@@ -16,22 +17,13 @@ const City: React.FC = () => {
     }
   }, [id, getCity]);
 
-  const { cityName, countryCode, date, notes } = currentCity;
+  const { cityName, countryCode, notes } = currentCity;
 
   if (isLoading) return <Spinner />;
 
   if (!currentCity.id) {
     return <div>Error: City not found</div>;
   }
-
-  const formattedDate = date
-    ? new Intl.DateTimeFormat("en", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-        weekday: "long",
-      }).format(new Date(date))
-    : "";
 
   return (
     <div className={styles.city}>
@@ -44,7 +36,7 @@ const City: React.FC = () => {
 
       <div className={styles.row}>
         <h6>You went to {cityName} on</h6>
-        <p>{formattedDate}</p>
+        {formattedDate(currentCity.date || "")}
       </div>
 
       {notes && (

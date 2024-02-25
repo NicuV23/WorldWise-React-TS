@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Button from "./button/Button";
+import Button from "../button/Button";
 import React from "react";
 
 interface BackButtonProps {

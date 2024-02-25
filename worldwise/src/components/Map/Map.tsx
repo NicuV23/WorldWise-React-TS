@@ -11,10 +11,10 @@ import "leaflet/dist/leaflet.css";
 import styles from "./Map.module.css";
 import { City, useCities } from "../../contexts/CitiesContext";
 import Button from "../button/Button";
-import React, { useEffect, useState } from "react";
-import { useGeolocation } from "../../hooks/useGeolocation";
+import React, { useEffect, useMemo, useState } from "react";
+import useGeolocation from "../../hooks/useGeolocation";
 import { useUrlPosition } from "../../hooks/useUrlPosition";
-import FlagImage from "../FlagImage";
+import FlagImage from "../flagImage/FlagImage";
 
 interface MapProps {
   countryCode: string;
@@ -22,12 +22,17 @@ interface MapProps {
 
 const Map: React.FC<MapProps> = () => {
   const { cities } = useCities();
-  const [mapPosition, setMapPosition] = useState<[number, number]>([40, 0]);
+  const defaultPosition = { lat: 40, lng: 0 };
   const {
     isLoading: isLoadingPosition,
     position: geolocationPosition,
     getPosition,
-  } = useGeolocation();
+  } = useGeolocation(defaultPosition);
+
+  const [mapPosition, setMapPosition] = useState<[number, number]>([
+    defaultPosition.lat,
+    defaultPosition.lng,
+  ]);
   const [mapLat, mapLng] = useUrlPosition();
 
   useEffect(() => {
@@ -38,6 +43,24 @@ const Map: React.FC<MapProps> = () => {
     if (geolocationPosition)
       setMapPosition([geolocationPosition.lat, geolocationPosition.lng]);
   }, [geolocationPosition]);
+
+  const markers = useMemo(() => {
+    return cities.map((city: City) => (
+      <Marker
+        position={
+          city?.position ? [city.position.lat, city.position.lng] : [0, 0]
+        }
+        key={city.id}
+      >
+        <Popup>
+          <FlagImage countryCode={city.countryCode} />
+          <span>{city.cityName}</span>
+        </Popup>
+      </Marker>
+    ));
+  }, [cities]);
+
+  const navigate = useNavigate();
 
   return (
     <div className={styles.mapContainer}>
@@ -57,22 +80,10 @@ const Map: React.FC<MapProps> = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
         />
-        {cities.map((city: City) => (
-          <Marker
-            position={
-              city?.position ? [city.position.lat, city.position.lng] : [0, 0]
-            }
-            key={city.id}
-          >
-            <Popup>
-              <FlagImage countryCode={city.countryCode} />
-              <span>{city.cityName}</span>
-            </Popup>
-          </Marker>
-        ))}
+        {markers}
 
         <ChangeCenter position={mapPosition} />
-        <DetectClick />
+        <DetectClick navigate={navigate} />
       </MapContainer>
     </div>
   );
@@ -88,9 +99,11 @@ function ChangeCenter({ position }: ChangeCenterProps) {
   return null;
 }
 
-function DetectClick() {
-  const navigate = useNavigate();
+interface DetectClickProps {
+  navigate: (url: string) => void;
+}
 
+function DetectClick({ navigate }: DetectClickProps) {
   useMapEvents({
     click: (e) => navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`),
   });

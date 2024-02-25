@@ -5,9 +5,11 @@ interface Position {
   lng: number;
 }
 
-export function useGeolocation(defaultPosition: Position | null = null) {
+const useGeolocation = (defaultPosition: Position) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [position, setPosition] = useState<Position | null>(defaultPosition);
+  const [position, setPosition] = useState<Position | null>(
+    defaultPosition || null
+  );
   const [error, setError] = useState<string | null>(null);
 
   const getPosition = () => {
@@ -33,4 +35,6 @@ export function useGeolocation(defaultPosition: Position | null = null) {
   };
 
   return { isLoading, position, error, getPosition };
-}
+};
+
+export default useGeolocation;

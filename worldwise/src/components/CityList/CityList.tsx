@@ -1,15 +1,18 @@
 import styles from "./CityList.module.css";
 import CityItem from "../cityItem/CityItem";
 import { useCities } from "../../contexts/CitiesContext";
-import React, { useMemo } from "react";
+import React, { useMemo, useCallback } from "react";
 import LoadingScreen from "../loadingScreen/LoadingScreen";
 
 const CityList: React.FC = () => {
   const { cities, isLoading, deleteCity } = useCities();
 
-  const handleDelete = (id: number) => {
-    deleteCity(id);
-  };
+  const handleDelete = useCallback(
+    (id: number) => {
+      deleteCity(id);
+    },
+    [deleteCity]
+  );
 
   const memoizedCityList = useMemo(() => {
     return (
@@ -23,7 +26,6 @@ const CityList: React.FC = () => {
             date={city.date || null}
             notes={city.notes || ""}
             key={city.id}
-            country={undefined}
           />
         ))}
       </ul>

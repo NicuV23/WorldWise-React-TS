@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./CountryItem.module.css";
-import FlagImage from "../FlagImage";
+import FlagImage from "../flagImage/FlagImage";
 interface CountryItemProps {
   countryName: string;
   countryCode: string;
