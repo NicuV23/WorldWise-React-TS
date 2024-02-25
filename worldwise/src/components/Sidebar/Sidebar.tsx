@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import AppNav from "../AppNav/AppNav";
-import Logo from "../Logo/Logo";
+import AppNav from "../appNav/AppNav";
+import Logo from "../logo/Logo";
 import styles from "./Sidebar.module.css";
 import React from "react";
 
@@ -11,7 +11,10 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = () => {
   return (
     <div className={styles.sidebar}>
-      <Logo />
+      <div className={styles.logo}>
+        <Logo />
+      </div>
+
       <AppNav />
 
       <Outlet />

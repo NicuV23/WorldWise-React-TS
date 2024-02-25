@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./CityItem.module.css";
-import { formattedDate } from "../../utils/formattedDate";
-import FlagImage from "../flagImage";
+import { formattedDate } from "../../utils/FormattedDate";
+import FlagImage from "../FlagImage";
 
 interface CityItemProps {
   country: string | undefined;
@@ -26,7 +26,6 @@ function CityItem({
   countryCode,
   onDelete,
 }: CityItemProps) {
-  // const formattedDateString = formattedDate(date);
   const navigate = useNavigate();
 
   return (

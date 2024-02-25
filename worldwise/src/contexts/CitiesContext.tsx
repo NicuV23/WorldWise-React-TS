@@ -14,7 +14,7 @@ export interface City {
   country?: string | undefined;
   id?: number;
   cityName?: string;
-  countryCode?: string;
+  countryCode?: string | undefined;
   date?: Date | null;
   notes?: string;
   position?:

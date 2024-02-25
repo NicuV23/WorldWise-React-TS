@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Button from "../Button/Button";
+import Button from "../button/Button";
 import BackButton from "../BackButton";
 import styles from "./Form.module.css";
 import { useUrlPosition } from "../../hooks/useUrlPosition";
-import Message from "../Message/Message";
-import Spinner from "../Spinner/Spinner";
+import Message from "../message/Message";
+import Spinner from "../spinner/Spinner";
 import { City, useCities } from "../../contexts/CitiesContext";
 import { useNavigate } from "react-router-dom";
-import FlagImage from "../flagImage";
+import FlagImage from "../FlagImage";
 
 const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 

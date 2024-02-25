@@ -1,5 +1,5 @@
 import React from "react";
-import Spinner from "../Spinner/Spinner";
+import Spinner from "../spinner/Spinner";
 import styles from "./SpinnerFullPage.module.css";
 
 function SpinnerFullPage() {

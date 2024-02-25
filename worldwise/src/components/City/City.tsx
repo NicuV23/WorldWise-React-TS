@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import { useCities } from "../../contexts/CitiesContext";
 import BackButton from "../BackButton";
 import styles from "./City.module.css";
-import Spinner from "../Spinner/Spinner";
+import Spinner from "../spinner/Spinner";
+import FlagImage from "../FlagImage";
 
 function City() {
   const { id } = useParams();
@@ -15,7 +16,7 @@ function City() {
     }
   }, [id, getCity]);
 
-  const { cityName, emoji, date, notes } = currentCity;
+  const { cityName, countryCode, date, notes } = currentCity;
 
   if (isLoading) return <Spinner />;
 
@@ -37,7 +38,7 @@ function City() {
       <div className={styles.row}>
         <h6>City name</h6>
         <h3>
-          <span>{emoji}</span> {cityName}
+          <FlagImage countryCode={countryCode} /> {cityName}
         </h3>
       </div>
 

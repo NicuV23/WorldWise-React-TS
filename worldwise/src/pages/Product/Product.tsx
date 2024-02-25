@@ -1,5 +1,5 @@
 import React from "react";
-import PageNav from "../../components/PageNav/PageNav";
+import PageNav from "../../components/pageNav/PageNav";
 import styles from "./Product.module.css";
 
 export default function Product() {
@@ -15,15 +15,11 @@ export default function Product() {
         <div>
           <h2>About WorldWide.</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo est
-            dicta illum vero culpa cum quaerat architecto sapiente eius non
-            soluta, molestiae nihil laborum, placeat debitis, laboriosam at fuga
-            perspiciatis?
-          </p>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis
-            doloribus libero sunt expedita ratione iusto, magni, id sapiente
-            sequi officiis et.
+            Explore the globe with Worldwise, a travel app that lets you mark
+            the countries you've visited, along with the date and location.
+            Capture memories by adding notes to each destination. Immerse
+            yourself in a world of discovery for just $9 per month. Your
+            passport to unforgettable adventures awaits!
           </p>
         </div>
       </section>

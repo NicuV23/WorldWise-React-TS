@@ -10,19 +10,17 @@ import {
 import "leaflet/dist/leaflet.css";
 import styles from "./Map.module.css";
 import { City, useCities } from "../../contexts/CitiesContext";
-import Button from "../Button/Button";
+import Button from "../button/Button";
 import React, { useEffect, useState } from "react";
 import { useGeolocation } from "../../hooks/useGeolocation";
 import { useUrlPosition } from "../../hooks/useUrlPosition";
-import FlagImage from "../flagImage";
+import FlagImage from "../FlagImage";
 
 interface countryCode {
   countryCode: string;
 }
 
-const Map: React.FC<countryCode> = ({ countryCode }) => {
-  console.log(countryCode);
-
+const Map: React.FC<countryCode> = () => {
   const { cities } = useCities();
   const [mapPosition, setMapPosition] = useState<[number, number]>([40, 0]);
   const {
@@ -67,7 +65,7 @@ const Map: React.FC<countryCode> = ({ countryCode }) => {
             key={city.id}
           >
             <Popup>
-              <FlagImage countryCode={"ro"} />
+              <FlagImage countryCode={city.countryCode} />
               <span>{city.cityName}</span>
             </Popup>
           </Marker>

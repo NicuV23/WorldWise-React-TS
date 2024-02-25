@@ -1,75 +1,75 @@
 {
   "cities": [
     {
-      "id": "612d",
-      "country": "Algeria",
-      "cityName": "Lardjem",
-      "countryCode": "DZ",
-      "date": "2024-02-24T22:25:09.200Z",
-      "notes": "",
+      "id": "f69b",
+      "country": "Qatar",
+      "cityName": "Doha",
+      "countryCode": "QA",
+      "date": "2022-12-18T15:21:28.000Z",
+      "notes": "Argentina win the world cup final!⚽⚽⚽",
       "position": {
-        "lat": 35.75373407913881,
-        "lng": 1.6098987894766736
+        "lat": 25.281954265954315,
+        "lng": 51.52420662393754
       }
     },
     {
-      "id": "9ac0",
+      "id": "564b",
+      "country": "Italy",
+      "cityName": "Rome",
+      "countryCode": "IT",
+      "date": "2024-06-26T14:24:36.000Z",
+      "notes": "Best food in the world!🍝🍝🍝",
+      "position": {
+        "lat": 41.818966472394635,
+        "lng": 12.43121254124431
+      }
+    },
+    {
+      "id": "bda0",
+      "country": "Romania",
+      "cityName": "Eforie Nord",
+      "countryCode": "RO",
+      "date": "2023-08-23T14:26:34.000Z",
+      "notes": "This is my Country! I was to the sea🌊⛵",
+      "position": {
+        "lat": 44.059712566971974,
+        "lng": 28.638553987155433
+      }
+    },
+    {
+      "id": "dde4",
+      "country": "Greece",
+      "cityName": "Athens",
+      "countryCode": "GR",
+      "date": "2023-10-25T14:28:03.000Z",
+      "notes": "Best history in the world!🏛️",
+      "position": {
+        "lat": 37.9347453439351,
+        "lng": 23.70347912114205
+      }
+    },
+    {
+      "id": "e5af",
+      "country": "Cabo Verde",
+      "cityName": "Atlantic/Cape_Verde",
+      "countryCode": "CV",
+      "date": "2023-12-20T15:29:06.000Z",
+      "notes": "African Vibes!🧜‍♂️",
+      "position": {
+        "lat": 14.879156653158086,
+        "lng": -23.55251854618567
+      }
+    },
+    {
+      "id": "9add",
       "country": "France",
-      "cityName": "Bareges",
+      "cityName": "Paris",
       "countryCode": "FR",
-      "date": "2024-02-24T22:30:35.228Z",
-      "notes": "super",
+      "date": "2024-02-25T15:34:28.000Z",
+      "notes": "With my girlfriend in the \"City of Love\"💓💖",
       "position": {
-        "lat": 42.89293745124388,
-        "lng": 0.12625337742246948
-      }
-    },
-    {
-      "id": "cf10",
-      "country": "Spain",
-      "cityName": "Sastago",
-      "countryCode": "ES",
-      "date": "2024-02-24T22:38:18.692Z",
-      "notes": "",
-      "position": {
-        "lat": 41.29596937727955,
-        "lng": -0.39841074374032953
-      }
-    },
-    {
-      "id": "577b",
-      "country": "Spain",
-      "cityName": "Sotillo de la Ribera",
-      "countryCode": "ES",
-      "date": "2024-02-24T22:42:42.481Z",
-      "notes": "",
-      "position": {
-        "lat": 41.80407814427237,
-        "lng": -3.803509432151718
-      }
-    },
-    {
-      "id": "85c6",
-      "country": "Spain",
-      "cityName": "Tejadillos",
-      "countryCode": "ES",
-      "date": "2024-02-24T22:43:48.911Z",
-      "notes": "",
-      "position": {
-        "lat": 40.1452892956766,
-        "lng": -1.606493393578743
-      }
-    },
-    {
-      "id": "9b7b",
-      "country": "Spain",
-      "cityName": "Jarafuel",
-      "countryCode": "ES",
-      "date": "2024-02-24T22:46:28.574Z",
-      "notes": "",
-      "position": {
-        "lat": 39.14710270770074,
-        "lng": -1.1909057581696094
+        "lat": 48.84302835299519,
+        "lng": 2.3479554145567376
       }
     }
   ]

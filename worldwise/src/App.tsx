@@ -3,17 +3,17 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { CitiesProvider } from "./contexts/CitiesContext";
 import { AuthProvider } from "./contexts/FakeAuthContext";
 import ProtectedRoute from "./pages/ProtectedRoute";
-import SpinnerFullPage from "./components/SpinnerFullPage/SpinnerFullPage";
-import CityList from "./components/CityList/CityList";
-import CountryList from "./components/CountryList/CountryList";
-import Form from "./components/Form/Form";
-import City from "./components/City/City";
+import SpinnerFullPage from "./components/spinnerFullPage/SpinnerFullPage";
+import CityList from "./components/cityList/CityList";
+import CountryList from "./components/countryList/CountryList";
+import Form from "./components/form/Form";
+import City from "./components/city/City";
 
-const Homepage = lazy(() => import("./pages/Homepage/Homepage"));
-const Product = lazy(() => import("./pages/Product/Product"));
+const Homepage = lazy(() => import("./pages/homepage/Homepage"));
+const Product = lazy(() => import("./pages/product/Product"));
 const Pricing = lazy(() => import("./pages/Pricing"));
-const Login = lazy(() => import("./pages/Login/Login"));
-const AppLayout = lazy(() => import("./pages/AppLayout/AppLayout"));
+const Login = lazy(() => import("./pages/login/Login"));
+const AppLayout = lazy(() => import("./pages/appLayout/AppLayout"));
 const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 
 function App() {

@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
-import Spinner from "../Spinner/Spinner";
-import Message from "../Message/Message";
+import Spinner from "../spinner/Spinner";
+import Message from "../message/Message";
 
 interface LoadingScreenProps {
   isLoading: boolean;

@@ -9,6 +9,11 @@
   cursor: pointer;
 }
 
+.btn:hover {
+  background-color: white;
+  color: black;
+}
+
 .primary {
   font-weight: 700;
   background-color: var(--color-brand--2);

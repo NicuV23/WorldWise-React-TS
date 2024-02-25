@@ -1,5 +1,5 @@
 import React from "react";
-import PageNav from "../components/PageNav/PageNav";
+import PageNav from "../components/pageNav/PageNav";
 import styles from "../pages/Product/Product.module.css";
 
 export default function Product() {
@@ -15,9 +15,9 @@ export default function Product() {
             Just $9/month.
           </h2>
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae vel
-            labore mollitia iusto. Recusandae quos provident, laboriosam fugit
-            voluptatem iste.
+            Access all features of this application for just $9 per month,
+            bringing you a seamless and enhanced user experience at an
+            affordable price point.
           </p>
         </div>
         <img src="img-2.jpg" alt="overview of a large city with skyscrapers" />

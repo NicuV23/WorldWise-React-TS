@@ -17,3 +17,13 @@
   font-size: 1.2rem;
   color: var(--color-light--1);
 }
+
+.logo {
+  padding: 5px;
+}
+
+.logo:hover {
+  background-color: gray;
+  border-radius: 10px;
+  opacity: 075;
+}

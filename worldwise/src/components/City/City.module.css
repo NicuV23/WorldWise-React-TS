@@ -1,8 +1,9 @@
 .city {
   padding: 2rem 3rem;
   max-height: 70%;
-  background-color: var(--color-dark--2);
+  background-color: rgba(0, 0, 0, 0.529);
   border-radius: 7px;
+  color: var(--color-light--1);
 
   width: 100%;
   display: flex;
@@ -18,13 +19,14 @@
 
 .city h6 {
   text-transform: uppercase;
-  font-size: 1.1rem;
+  font-size: 1.55rem;
   font-weight: 900;
-  color: var(--color-light--1);
+  color: white;
+  font-style: inherit;
 }
 
 .city h3 {
-  font-size: 1.9rem;
+  font-size: 1.4rem;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -43,4 +45,10 @@
 .city a:visited {
   font-size: 1.6rem;
   color: var(--color-brand--1);
+  font-style: italic;
+}
+
+.city a:link:hover {
+  color: blue;
+  text-shadow: 1px 1px 1px 1px white;
 }

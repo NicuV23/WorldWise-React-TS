@@ -26,3 +26,11 @@
 .nav a:global(.active) {
   background-color: var(--color-dark--0);
 }
+
+.countries :hover {
+  background-color: gray;
+}
+
+.cities :hover {
+  background-color: gray;
+}
