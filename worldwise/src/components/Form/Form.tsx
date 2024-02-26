@@ -7,7 +7,7 @@ import styles from "./Form.module.css";
 import { useUrlPosition } from "../../hooks/useUrlPosition";
 import Message from "../message/Message";
 import Spinner from "../spinner/Spinner";
-import { City, useCities } from "../../contexts/CitiesContext";
+import { Location, useCities } from "../../contexts/CitiesContext";
 import { useNavigate } from "react-router-dom";
 import FlagImage from "../flag-image/FlagImage";
 
@@ -19,7 +19,7 @@ const Form: React.FC = () => {
   const navigate = useNavigate();
 
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
-  const [city, setCity] = useState<City>();
+  const [city, setCity] = useState<Location>();
   const [geocodingError, setGeocodingError] = useState("");
 
   useEffect(() => {

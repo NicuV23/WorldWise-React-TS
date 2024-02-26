@@ -9,7 +9,7 @@ import {
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import styles from "./Map.module.css";
-import { City, useCities } from "../../contexts/CitiesContext";
+import { Location, useCities } from "../../contexts/CitiesContext";
 import Button from "../button/Button";
 import React, { useEffect, useMemo, useState } from "react";
 import useGeolocation from "../../hooks/useGeolocation";
@@ -50,7 +50,7 @@ const Map: React.FC<MapProps> = () => {
   }, [geolocationPosition]);
 
   const markers = useMemo(() => {
-    return cities.map((city: City) => (
+    return cities.map((city: Location) => (
       <Marker
         position={
           city?.position ? [city.position.lat, city.position.lng] : [0, 0]

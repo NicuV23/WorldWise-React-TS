@@ -11,7 +11,7 @@ import React, {
 
 const BASE_URL = "http://localhost:9000";
 
-export interface City {
+export interface Location {
   country?: string | undefined;
   id?: number;
   cityName?: string;
@@ -27,17 +27,17 @@ export interface City {
 }
 
 interface CitiesState {
-  cities: City[];
+  cities: Location[];
   isLoading: boolean;
-  currentCity: Partial<City>;
+  currentCity: Partial<Location>;
   error: string;
 }
 
 type CitiesAction =
   | { type: "loading" }
-  | { type: "cities/loaded"; payload: City[] }
-  | { type: "city/loaded"; payload: City }
-  | { type: "city/created"; payload: City }
+  | { type: "cities/loaded"; payload: Location[] }
+  | { type: "city/loaded"; payload: Location }
+  | { type: "city/created"; payload: Location }
   | { type: "city/deleted"; payload: number }
   | { type: "rejected"; payload: string };
 
@@ -85,12 +85,12 @@ const reducer: (state: CitiesState, action: CitiesAction) => CitiesState = (
 };
 
 interface CitiesContextProps {
-  cities: City[];
+  cities: Location[];
   isLoading: boolean;
-  currentCity: Partial<City>;
+  currentCity: Partial<Location>;
   error: string;
   getCity: (id: string) => Promise<void>;
-  createCity: (newCity: City) => Promise<void>;
+  createCity: (newCity: Location) => Promise<void>;
   deleteCity: (id: number) => Promise<void>;
 }
 
@@ -149,7 +149,7 @@ const CitiesProvider: FC<CitiesProviderProps> = ({ children }) => {
     [state.currentCity.id]
   );
 
-  async function createCity(newCity: City) {
+  async function createCity(newCity: Location) {
     dispatch({ type: "loading" });
 
     try {
