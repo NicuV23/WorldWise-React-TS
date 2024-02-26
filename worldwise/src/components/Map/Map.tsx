@@ -23,7 +23,7 @@ interface MapProps {
 const Map: React.FC<MapProps> = () => {
   const navigate = useNavigate();
 
-  const { cities } = useCities();
+  const { locations } = useCities();
   const defaultPosition = { lat: 40, lng: 0 };
   const {
     isLoading: isLoadingPosition,
@@ -50,7 +50,7 @@ const Map: React.FC<MapProps> = () => {
   }, [geolocationPosition]);
 
   const markers = useMemo(() => {
-    return cities.map((city: Location) => (
+    return locations.map((city: Location) => (
       <Marker
         position={
           city?.position ? [city.position.lat, city.position.lng] : [0, 0]
@@ -63,7 +63,7 @@ const Map: React.FC<MapProps> = () => {
         </Popup>
       </Marker>
     ));
-  }, [cities]);
+  }, [locations]);
 
   return (
     <div className={styles.mapContainer}>
@@ -96,22 +96,22 @@ interface ChangeCenterProps {
   position: [number, number];
 }
 
-function ChangeCenter({ position }: ChangeCenterProps) {
+const ChangeCenter: React.FC<ChangeCenterProps> = ({ position }) => {
   const map = useMap();
   map.setView(position);
   return null;
-}
+};
 
 interface DetectClickProps {
   navigate: (url: string) => void;
 }
 
-function DetectClick({ navigate }: DetectClickProps) {
+const DetectClick: React.FC<DetectClickProps> = ({ navigate }) => {
   useMapEvents({
     click: (e) => navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`),
   });
 
   return null;
-}
+};
 
 export default Map;

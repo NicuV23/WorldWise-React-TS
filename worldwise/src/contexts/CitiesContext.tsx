@@ -27,7 +27,7 @@ export interface Location {
 }
 
 interface CitiesState {
-  cities: Location[];
+  locations: Location[];
   isLoading: boolean;
   currentCity: Partial<Location>;
   error: string;
@@ -42,7 +42,7 @@ type CitiesAction =
   | { type: "rejected"; payload: string };
 
 const initialState: CitiesState = {
-  cities: [],
+  locations: [],
   isLoading: false,
   currentCity: {
     id: 0,
@@ -58,21 +58,21 @@ const reducer: (state: CitiesState, action: CitiesAction) => CitiesState = (
     case "loading":
       return { ...state, isLoading: true };
     case "cities/loaded":
-      return { ...state, isLoading: false, cities: action.payload };
+      return { ...state, isLoading: false, locations: action.payload };
     case "city/loaded":
       return { ...state, isLoading: false, currentCity: action.payload };
     case "city/created":
       return {
         ...state,
         isLoading: false,
-        cities: [...state.cities, action.payload],
+        locations: [...state.locations, action.payload],
         currentCity: action.payload,
       };
     case "city/deleted":
       return {
         ...state,
         isLoading: false,
-        cities: state.cities.filter((city) => city.id !== action.payload),
+        locations: state.locations.filter((city) => city.id !== action.payload),
         currentCity: {
           id: 0,
         },
@@ -85,12 +85,12 @@ const reducer: (state: CitiesState, action: CitiesAction) => CitiesState = (
 };
 
 interface CitiesContextProps {
-  cities: Location[];
+  locations: Location[];
   isLoading: boolean;
   currentCity: Partial<Location>;
   error: string;
   getCity: (id: string) => Promise<void>;
-  createCity: (newCity: Location) => Promise<void>;
+  createLocation: (newCity: Location) => Promise<void>;
   deleteCity: (id: number) => Promise<void>;
 }
 
@@ -149,7 +149,7 @@ const CitiesProvider: FC<CitiesProviderProps> = ({ children }) => {
     [state.currentCity.id]
   );
 
-  async function createCity(newCity: Location) {
+  async function createLocation(newCity: Location) {
     dispatch({ type: "loading" });
 
     try {
@@ -191,12 +191,12 @@ const CitiesProvider: FC<CitiesProviderProps> = ({ children }) => {
   return (
     <CitiesContext.Provider
       value={{
-        cities: state.cities,
+        locations: state.locations,
         isLoading: state.isLoading,
         currentCity: state.currentCity,
         error: state.error,
         getCity,
-        createCity,
+        createLocation,
         deleteCity,
       }}
     >

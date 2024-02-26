@@ -5,12 +5,12 @@ import React, { useMemo } from "react";
 import LoadingScreen from "../loading-screen/LoadingScreen";
 
 const CountryList: React.FC = () => {
-  const { cities, isLoading } = useCities();
+  const { locations, isLoading } = useCities();
 
   const memoizedCountryList = useMemo(() => {
     return (
       <ul className={styles.countryList}>
-        {cities.map((country) => (
+        {locations.map((country) => (
           <CountryItem
             key={country.cityName}
             countryName={country.country || ""}
@@ -19,10 +19,10 @@ const CountryList: React.FC = () => {
         ))}
       </ul>
     );
-  }, [cities]);
+  }, [locations]);
 
   return (
-    <LoadingScreen isLoading={isLoading} length={cities.length}>
+    <LoadingScreen isLoading={isLoading} length={locations.length}>
       {memoizedCountryList}
     </LoadingScreen>
   );

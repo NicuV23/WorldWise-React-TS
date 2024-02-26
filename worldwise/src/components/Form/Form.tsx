@@ -15,11 +15,11 @@ const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 
 const Form: React.FC = () => {
   const [lat, lng] = useUrlPosition();
-  const { createCity, isLoading } = useCities();
+  const { createLocation, isLoading } = useCities();
   const navigate = useNavigate();
 
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
-  const [city, setCity] = useState<Location>();
+  const [location, setLocation] = useState<Location>();
   const [geocodingError, setGeocodingError] = useState("");
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const Form: React.FC = () => {
           );
         }
 
-        const newCity = {
+        const newLocation = {
           country: data.countryName,
           cityName: data.city || data.locality,
           countryCode: data.countryCode,
@@ -52,7 +52,7 @@ const Form: React.FC = () => {
           position: { lat, lng },
         };
 
-        setCity(newCity);
+        setLocation(newLocation);
       } catch (err: unknown) {
         if (err instanceof Error) {
           setGeocodingError(err.message);
@@ -68,11 +68,11 @@ const Form: React.FC = () => {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
 
-    if (!city?.cityName || !city.date) {
+    if (!location?.cityName || !location.date) {
       return;
     }
 
-    await createCity(city);
+    await createLocation(location);
     navigate("/app/cities");
   };
 
@@ -98,32 +98,34 @@ const Form: React.FC = () => {
         <input
           id="cityName"
           onChange={(e) =>
-            setCity({ ...city, [e.target.name]: e.target.value })
+            setLocation({ ...location, [e.target.name]: e.target.value })
           }
-          value={city?.cityName}
+          value={location?.cityName}
         />
         <span className={styles.flag}>
-          <FlagImage countryCode={city?.countryCode || ""} />
+          <FlagImage countryCode={location?.countryCode || ""} />
         </span>
       </div>
 
       <div className={styles.row}>
-        <label htmlFor="date">When did you go to {city?.cityName}?</label>
+        <label htmlFor="date">When did you go to {location?.cityName}?</label>
 
         <DatePicker
           id="date"
-          onChange={(date) => setCity({ ...city, date })}
-          selected={city?.date}
+          onChange={(date) => setLocation({ ...location, date })}
+          selected={location?.date}
           dateFormat="dd/MM/yyyy"
         />
       </div>
 
       <div className={styles.row}>
-        <label htmlFor="notes">Notes about your trip to {city?.cityName}</label>
+        <label htmlFor="notes">
+          Notes about your trip to {location?.cityName}
+        </label>
         <textarea
           id="notes"
-          onChange={(e) => setCity({ ...city, notes: e.target.value })}
-          value={city?.notes}
+          onChange={(e) => setLocation({ ...location, notes: e.target.value })}
+          value={location?.notes}
         />
       </div>
 
