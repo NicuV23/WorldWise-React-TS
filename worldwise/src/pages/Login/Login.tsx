@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/button/Button";
 import PageNav from "../../components/page-nav/PageNav";
@@ -17,14 +17,26 @@ const Login: React.FC = () => {
   const { login, isAuthenticated } = useAuth() as AuthProps;
   const navigate = useNavigate();
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (email && password) login(email, password);
+    if (email && password) {
+      login(email, password);
+    }
+  };
+
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
   };
 
   useEffect(() => {
-    if (isAuthenticated) navigate("/app", { replace: true });
+    if (isAuthenticated) {
+      navigate("/app", { replace: true });
+    }
   }, [isAuthenticated, navigate]);
 
   return (
@@ -36,7 +48,7 @@ const Login: React.FC = () => {
           <input
             type="email"
             id="email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleEmailChange}
             value={email}
           />
         </div>
@@ -46,7 +58,7 @@ const Login: React.FC = () => {
           <input
             type="password"
             id="password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handlePasswordChange}
             value={password}
           />
         </div>

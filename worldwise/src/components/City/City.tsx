@@ -19,7 +19,9 @@ const City: React.FC = () => {
 
   const { cityName, countryCode, notes } = currentCity;
 
-  if (isLoading) return <Spinner />;
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   if (!currentCity.id) {
     return <div>Error: City not found</div>;

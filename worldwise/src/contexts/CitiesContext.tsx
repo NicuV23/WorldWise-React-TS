@@ -209,17 +209,19 @@ const CitiesProvider: FC<CitiesProviderProps> = ({ children }) => {
 
 const useCities: () => CitiesContextProps = () => {
   const context = useContext(CitiesContext);
-  if (!context)
+  if (!context) {
     throw new Error("CitiesContext was used outside the CitiesProvider");
+  }
   return context;
 };
 
 const useCitiesDispatch: () => Dispatch<CitiesAction> = () => {
   const dispatch = useContext(CitiesDispatchContext);
-  if (!dispatch)
+  if (!dispatch) {
     throw new Error(
       "CitiesDispatchContext was used outside the CitiesProvider"
     );
+  }
   return dispatch;
 };
 

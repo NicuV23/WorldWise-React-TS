@@ -37,10 +37,11 @@ const Form: React.FC = () => {
         );
         const data = await response.json();
 
-        if (!data.countryCode)
+        if (!data.countryCode) {
           throw new Error(
             "That doesn't seem to be a city. Click somewhere else 😉"
           );
+        }
 
         const newCity = {
           country: data.countryName,

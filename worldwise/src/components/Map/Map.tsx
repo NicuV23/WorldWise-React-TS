@@ -38,12 +38,15 @@ const Map: React.FC<MapProps> = () => {
   const [mapLat, mapLng] = useUrlPosition();
 
   useEffect(() => {
-    if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
+    if (mapLat && mapLng) {
+      setMapPosition([mapLat, mapLng]);
+    }
   }, [mapLat, mapLng]);
 
   useEffect(() => {
-    if (geolocationPosition)
+    if (geolocationPosition) {
       setMapPosition([geolocationPosition.lat, geolocationPosition.lng]);
+    }
   }, [geolocationPosition]);
 
   const markers = useMemo(() => {
