@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useCities } from "../../contexts/CitiesContext";
-import BackButton from "../backButton/BackButton";
+import BackButton from "../back-button/BackButton";
 import styles from "./City.module.css";
 import Spinner from "../spinner/Spinner";
-import FlagImage from "../flagImage/FlagImage";
+import FlagImage from "../flag-image/FlagImage";
 import { formattedDate } from "../../utils/FormattedDate";
 
 const City: React.FC = () => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Map from "../../components/map/Map";
-import Sidebar from "../../components/sidebar/Sidebar";
+import Sidebar from "../../components/side-bar/Sidebar";
 import User from "../../components/user/User";
 import styles from "./AppLayout.module.css";
 

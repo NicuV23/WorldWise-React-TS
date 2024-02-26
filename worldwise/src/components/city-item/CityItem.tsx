@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./CityItem.module.css";
 import { formattedDate } from "../../utils/FormattedDate";
-import FlagImage from "../flagImage/FlagImage";
+import FlagImage from "../flag-image/FlagImage";
 
 interface CityItemProps {
   id: number;

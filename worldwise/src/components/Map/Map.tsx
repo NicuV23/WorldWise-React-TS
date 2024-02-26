@@ -14,7 +14,7 @@ import Button from "../button/Button";
 import React, { useEffect, useMemo, useState } from "react";
 import useGeolocation from "../../hooks/useGeolocation";
 import { useUrlPosition } from "../../hooks/useUrlPosition";
-import FlagImage from "../flagImage/FlagImage";
+import FlagImage from "../flag-image/FlagImage";
 
 interface MapProps {
   countryCode: string;

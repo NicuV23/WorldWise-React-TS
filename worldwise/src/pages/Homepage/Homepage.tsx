@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import PageNav from "../../components/pageNav/PageNav";
+import PageNav from "../../components/page-nav/PageNav";
 import styles from "./Homepage.module.css";
 import React from "react";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import PageNav from "../../components/pageNav/PageNav";
+import PageNav from "../../components/page-nav/PageNav";
 import styles from "./Product.module.css";
 
 export default function Product() {

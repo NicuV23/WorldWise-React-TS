@@ -1,8 +1,8 @@
 import styles from "./CityList.module.css";
-import CityItem from "../cityItem/CityItem";
+import CityItem from "../city-item/CityItem";
 import { useCities } from "../../contexts/CitiesContext";
 import React, { useMemo, useCallback } from "react";
-import LoadingScreen from "../loadingScreen/LoadingScreen";
+import LoadingScreen from "../loading-screen/LoadingScreen";
 
 const CityList: React.FC = () => {
   const { cities, isLoading, deleteCity } = useCities();
