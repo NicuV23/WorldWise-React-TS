@@ -71,18 +71,6 @@
         "lat": 48.84302835299519,
         "lng": 2.3479554145567376
       }
-    },
-    {
-      "id": "db63",
-      "country": "Spain",
-      "cityName": "Real de Gandia",
-      "countryCode": "ES",
-      "date": "2024-02-25T23:57:35.397Z",
-      "notes": "db",
-      "position": {
-        "lat": 38.94515010451593,
-        "lng": -0.20470460526015538
-      }
     }
   ]
 }
