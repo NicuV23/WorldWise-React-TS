@@ -21,6 +21,8 @@ interface MapProps {
 }
 
 const Map: React.FC<MapProps> = () => {
+  const navigate = useNavigate();
+
   const { cities } = useCities();
   const defaultPosition = { lat: 40, lng: 0 };
   const {
@@ -59,8 +61,6 @@ const Map: React.FC<MapProps> = () => {
       </Marker>
     ));
   }, [cities]);
-
-  const navigate = useNavigate();
 
   return (
     <div className={styles.mapContainer}>
