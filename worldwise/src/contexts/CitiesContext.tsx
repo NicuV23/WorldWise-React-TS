@@ -84,11 +84,7 @@ const reducer: (state: CitiesState, action: CitiesAction) => CitiesState = (
   }
 };
 
-interface CitiesContextProps {
-  locations: Location[];
-  isLoading: boolean;
-  currentCity: Partial<Location>;
-  error: string;
+interface CitiesContextProps extends CitiesState {
   getCity: (id: string) => Promise<void>;
   createLocation: (newCity: Location) => Promise<void>;
   deleteCity: (id: number) => Promise<void>;
@@ -191,10 +187,7 @@ const CitiesProvider: FC<CitiesProviderProps> = ({ children }) => {
   return (
     <CitiesContext.Provider
       value={{
-        locations: state.locations,
-        isLoading: state.isLoading,
-        currentCity: state.currentCity,
-        error: state.error,
+        ...state,
         getCity,
         createLocation,
         deleteCity,
