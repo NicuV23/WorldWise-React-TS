@@ -9,11 +9,11 @@ import CountryList from "./components/country-list/CountryList";
 import Form from "./components/form/Form";
 import City from "./components/city/City";
 
-const Homepage = lazy(() => import("./pages/homepage/Homepage"));
+const Homepage = lazy(() => import("./pages/home-page/Homepage"));
 const Product = lazy(() => import("./pages/product/Product"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const Login = lazy(() => import("./pages/login/Login"));
-const AppLayout = lazy(() => import("./pages/appLayout/AppLayout"));
+const AppLayout = lazy(() => import("./pages/app-layout/AppLayout"));
 const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 
 function App() {

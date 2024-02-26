@@ -10,18 +10,18 @@ type AuthProps = {
   isAuthenticated: boolean;
 };
 
-export default function Login() {
+const Login: React.FC = () => {
   const [email, setEmail] = useState("jack@example.com");
   const [password, setPassword] = useState("qwerty");
 
   const { login, isAuthenticated } = useAuth() as AuthProps;
   const navigate = useNavigate();
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
 
     if (email && password) login(email, password);
-  }
+  };
 
   useEffect(() => {
     if (isAuthenticated) navigate("/app", { replace: true });
@@ -52,7 +52,6 @@ export default function Login() {
         </div>
 
         <div>
-          {/* Asigurați-vă că Button primește o funcție onClick în propria definiție */}
           <Button type="primary" onClick={() => handleSubmit}>
             Login
           </Button>
@@ -60,4 +59,6 @@ export default function Login() {
       </form>
     </main>
   );
-}
+};
+
+export default Login;

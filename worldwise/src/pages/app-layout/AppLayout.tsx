@@ -4,7 +4,7 @@ import Sidebar from "../../components/side-bar/Sidebar";
 import User from "../../components/user/User";
 import styles from "./AppLayout.module.css";
 
-function AppLayout() {
+const AppLayout: React.FC = () => {
   const [currentCountry, setCurrentCountry] = useState("Romania");
 
   const handleCountryChange = (newCountry: string) => {
@@ -18,6 +18,6 @@ function AppLayout() {
       <User />
     </div>
   );
-}
+};
 
 export default AppLayout;

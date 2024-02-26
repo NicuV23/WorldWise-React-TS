@@ -1,9 +1,11 @@
 import React from "react";
 
-export default function PageNotFound() {
+const PageNotFound: React.FC = () => {
   return (
     <div>
       <h1>Page not found 😢</h1>
     </div>
   );
-}
+};
+
+export default PageNotFound;

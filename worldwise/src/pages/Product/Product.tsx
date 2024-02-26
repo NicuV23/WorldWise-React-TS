@@ -2,7 +2,7 @@ import React from "react";
 import PageNav from "../../components/page-nav/PageNav";
 import styles from "./Product.module.css";
 
-export default function Product() {
+const Product: React.FC = () => {
   return (
     <main className={styles.product}>
       <PageNav />
@@ -25,4 +25,6 @@ export default function Product() {
       </section>
     </main>
   );
-}
+};
+
+export default Product;

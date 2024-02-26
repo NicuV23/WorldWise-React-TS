@@ -3,7 +3,7 @@ import PageNav from "../../components/page-nav/PageNav";
 import styles from "./Homepage.module.css";
 import React from "react";
 
-export default function Homepage() {
+const Homepage: React.FC = () => {
   return (
     <main className={styles.homepage}>
       <PageNav />
@@ -25,4 +25,5 @@ export default function Homepage() {
       </section>
     </main>
   );
-}
+};
+export default Homepage;

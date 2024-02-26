@@ -10,7 +10,7 @@ type AuthProps = {
   isAuthenticated: boolean;
 };
 
-function ProtectedRoute({ children }: ProtectedRouteProps) {
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const { isAuthenticated } = useAuth() as AuthProps;
   const navigate = useNavigate();
 
@@ -19,6 +19,6 @@ function ProtectedRoute({ children }: ProtectedRouteProps) {
   }, [isAuthenticated, navigate]);
 
   return isAuthenticated ? <>{children}</> : null;
-}
+};
 
 export default ProtectedRoute;
