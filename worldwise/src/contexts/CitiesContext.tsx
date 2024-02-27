@@ -25,16 +25,16 @@ interface CitiesState {
 }
 
 interface CitiesContextProps extends CitiesState {
-  getCity: (id: string) => Promise<void>;
-  createLocation: (newCity: Location) => Promise<void>;
-  deleteCity: (id: number) => Promise<void>;
+  getCity: (id: string) => void;
+  createLocation: (newCity: Location) => void;
+  deleteCity: (id: number) => void;
 }
-
-const CitiesContext = createContext<CitiesContextProps | null>(null);
 
 interface CitiesProviderProps {
   children: ReactNode;
 }
+
+const CitiesContext = createContext<CitiesContextProps | null>(null);
 
 const CitiesProvider: FC<CitiesProviderProps> = ({ children }) => {
   const [state, setState] = useState<CitiesState>({
@@ -47,92 +47,51 @@ const CitiesProvider: FC<CitiesProviderProps> = ({ children }) => {
   });
 
   useEffect(() => {
-    const fetchData = async () => {
-      setState((prev) => ({ ...prev, isLoading: true }));
-      try {
-        const initialData: Location[] = [];
+    setState((prev) => ({ ...prev, isLoading: true }));
 
-        setState((prev) => ({
-          ...prev,
-          locations: initialData,
-          isLoading: false,
-        }));
-      } catch (error) {
-        setState((prev) => ({
-          ...prev,
-          isLoading: false,
-          error: "Error loading initial data",
-        }));
-      }
-    };
+    const initialData: Location[] = [];
 
-    fetchData();
+    setState((prev) => ({ ...prev, locations: initialData, isLoading: false }));
   }, []);
 
-  const getCity = async (id: string) => {
-    setState((prev) => ({ ...prev, isLoading: true }));
-    try {
-      const cityById: Location | undefined = state.locations.find(
+  const getCity = (id: string) => {
+    setState((prev) => {
+      const cityById: Location | undefined = prev.locations.find(
         (city) => city.id === Number(id)
       );
-
-      if (cityById) {
-        setState((prev) => ({
-          ...prev,
-          currentCity: cityById,
-          isLoading: false,
-        }));
-      }
-    } catch (error) {
-      setState((prev) => ({
+      return {
         ...prev,
         isLoading: false,
-        error: "Error getting city by ID",
-      }));
-    }
+        currentCity: cityById || prev.currentCity,
+      };
+    });
   };
 
-  const createLocation = async (newCity: Location) => {
-    setState((prev) => ({ ...prev, isLoading: true }));
-    try {
+  const createLocation = (newCity: Location) => {
+    setState((prev) => {
       const createdCity: Location = {
         ...newCity,
-        id: state.locations.length + 1,
+        id: prev.locations.length + 1,
       };
-
-      setState((prev) => ({
+      return {
         ...prev,
+        isLoading: false,
         locations: [...prev.locations, createdCity],
         currentCity: createdCity,
-        isLoading: false,
-      }));
-    } catch (error) {
-      setState((prev) => ({
-        ...prev,
-        isLoading: false,
-        error: "Error creating city",
-      }));
-    }
+      };
+    });
   };
 
-  const deleteCity = async (id: number) => {
-    setState((prev) => ({ ...prev, isLoading: true }));
-    try {
-      const updatedLocations = state.locations.filter((city) => city.id !== id);
-
-      setState((prev) => ({
+  const deleteCity = (id: number) => {
+    setState((prev) => {
+      const updatedLocations = prev.locations.filter((city) => city.id !== id);
+      return {
         ...prev,
         locations: updatedLocations,
         currentCity: { id: 0 },
         isLoading: false,
-      }));
-    } catch (error) {
-      setState((prev) => ({
-        ...prev,
-        isLoading: false,
-        error: "Error deleting city",
-      }));
-    }
+      };
+    });
   };
 
   return (
@@ -149,13 +108,7 @@ const CitiesProvider: FC<CitiesProviderProps> = ({ children }) => {
   );
 };
 
-const useCities = (): CitiesContextProps => {
-  const context = useContext(CitiesContext);
-  if (!context) {
-    throw new Error("CitiesContext was used outside the CitiesProvider");
-  }
-  return context;
-};
-
-export { CitiesProvider, useCities };
+export { CitiesProvider };
 export type { Location };
+
+export const useCities = (): CitiesContextProps => useContext(CitiesContext)!;
