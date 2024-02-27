@@ -51,13 +51,6 @@ const reducer: (state: AuthState, action: AuthAction) => AuthState = (
   }
 };
 
-const FAKE_USER: User = {
-  name: "Jack",
-  email: "jack@example.com",
-  password: "qwerty",
-  avatar: "https://i.pravatar.cc/100?u=zz",
-};
-
 interface AuthProviderProps {
   children: ReactNode;
 }
@@ -69,8 +62,18 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   );
 
   const login = (email: string, password: string): void => {
-    if (email === FAKE_USER.email && password === FAKE_USER.password) {
-      dispatch({ type: "login", payload: FAKE_USER });
+    const authenticatedUser: User = {
+      name: "John Doe",
+      email: "john.doe@example.com",
+      password: "securepassword",
+      avatar: "https://i.pravatar.cc/100?u=zz",
+    };
+
+    if (
+      email === authenticatedUser.email &&
+      password === authenticatedUser.password
+    ) {
+      dispatch({ type: "login", payload: authenticatedUser });
     }
   };
 
