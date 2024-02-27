@@ -51,6 +51,13 @@ const reducer: (state: AuthState, action: AuthAction) => AuthState = (
   }
 };
 
+const FAKE_USER: User = {
+  name: "Jack",
+  email: "jack@example.com",
+  password: "qwerty",
+  avatar: "https://i.pravatar.cc/100?u=zz",
+};
+
 interface AuthProviderProps {
   children: ReactNode;
 }
@@ -61,43 +68,33 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     initialState
   );
 
-  const login = (email: string, password: string): void => {
-    const authenticatedUser: User = {
-      name: "John Doe",
-      email: "john.doe@example.com",
-      password: "securepassword",
-      avatar: "https://i.pravatar.cc/100?u=zz",
-    };
-
-    if (
-      email === authenticatedUser.email &&
-      password === authenticatedUser.password
-    ) {
-      dispatch({ type: "login", payload: authenticatedUser });
-    }
+  const login: (email: string, password: string) => void = (
+    email,
+    password
+  ) => {
+    if (email === FAKE_USER.email && password === FAKE_USER.password)
+      dispatch({ type: "login", payload: FAKE_USER });
   };
 
-  const logout = (): void => {
+  const logout: () => void = () => {
     dispatch({ type: "logout" });
   };
 
-  const contextValue = { user, isAuthenticated, login, logout };
-
   return (
-    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user, isAuthenticated, login, logout }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 
-const useAuth = (): {
+const useAuth: () => {
   user: AuthState["user"];
   isAuthenticated: AuthState["isAuthenticated"];
   login: (email: string, password: string) => void;
   logout: () => void;
-} => {
+} = () => {
   const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("AuthContext was used outside AuthProvider");
-  }
+  if (!context) throw new Error("AuthContext was used outside AuthProvider");
   return context;
 };
 
