@@ -44,6 +44,10 @@ const CitiesProvider: FC<CitiesProviderProps> = ({ children }) => {
 
   const getCity = (id: string) => {
     setState((prev) => {
+      if (prev.currentCity.id === Number(id)) {
+        return prev;
+      }
+
       const cityById: Location | undefined = prev.locations.find(
         (city) => city.id === Number(id)
       );
