@@ -4,7 +4,6 @@ import React, {
   ReactNode,
   FC,
   useState,
-  useRef,
 } from "react";
 
 interface Location {
@@ -19,7 +18,6 @@ interface Location {
 
 interface CitiesState {
   locations: Location[];
-  isLoading: boolean;
   currentCity: Partial<Location>;
   error: string;
 }
@@ -38,29 +36,23 @@ const CitiesContext = createContext<CitiesContextProps | null>(null);
 const CitiesProvider: FC<CitiesProviderProps> = ({ children }) => {
   const [state, setState] = useState<CitiesState>({
     locations: [],
-    isLoading: false,
     currentCity: {
       id: 0,
     },
     error: "",
   });
 
-  const isLoadingRef = useRef(false);
-
   const getCity = (id: string) => {
-    if (!isLoadingRef.current) {
-      isLoadingRef.current = true;
-      setState((prev) => {
-        const cityById: Location | undefined = prev.locations.find(
-          (city) => city.id === Number(id)
-        );
-        return {
-          ...prev,
-          isLoading: false,
-          currentCity: cityById || prev.currentCity,
-        };
-      });
-    }
+    setState((prev) => {
+      const cityById: Location | undefined = prev.locations.find(
+        (city) => city.id === Number(id)
+      );
+
+      return {
+        ...prev,
+        currentCity: cityById || prev.currentCity,
+      };
+    });
   };
 
   const createLocation = (newCity: Location) => {
@@ -71,7 +63,6 @@ const CitiesProvider: FC<CitiesProviderProps> = ({ children }) => {
       };
       return {
         ...prev,
-        isLoading: false,
         locations: [...prev.locations, createdCity],
         currentCity: createdCity,
       };
@@ -85,7 +76,6 @@ const CitiesProvider: FC<CitiesProviderProps> = ({ children }) => {
         ...prev,
         locations: updatedLocations,
         currentCity: { id: 0 },
-        isLoading: false,
       };
     });
   };

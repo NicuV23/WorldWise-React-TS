@@ -45,3 +45,10 @@ a.ctaLink:hover {
   border-radius: 10px;
   opacity: 075;
 }
+
+@media only screen and (max-width: 550px) {
+  .nav {
+    display: flex;
+    flex-direction: column;
+  }
+}

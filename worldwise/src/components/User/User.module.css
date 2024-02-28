@@ -32,3 +32,9 @@
   text-transform: uppercase;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 550px) {
+  .user {
+    position: static;
+  }
+}
