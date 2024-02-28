@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { CitiesProvider } from "./contexts/CitiesContext";
 import { AuthProvider } from "./contexts/FakeAuthContext";
 import ProtectedRoute from "./pages/ProtectedRoute";
-import SpinnerFullPage from "./components/spinner-full-page/SpinnerFullPage";
 import CityList from "./components/city-list/CityList";
 import CountryList from "./components/country-list/CountryList";
 import Form from "./components/form/Form";
@@ -21,7 +20,7 @@ function App() {
     <AuthProvider>
       <CitiesProvider>
         <BrowserRouter>
-          <Suspense fallback={<SpinnerFullPage />}>
+          <Suspense>
             <Routes>
               <Route index element={<Homepage />} />
               <Route path="product" element={<Product />} />

@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import Spinner from "../spinner/Spinner";
 import Message from "../message/Message";
 
 interface LoadingScreenProps {
@@ -14,7 +13,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
   children,
 }) => {
   if (isLoading) {
-    return <Spinner />;
+    return null;
   }
 
   if (!length) {
