@@ -24,8 +24,6 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
-const AuthContext = createContext<AuthState | undefined>(undefined);
-
 const FAKE_USER: User = {
   name: "Jack",
   email: "jack@example.com",
@@ -33,8 +31,11 @@ const FAKE_USER: User = {
   avatar: "https://i.pravatar.cc/100?u=zz",
 };
 
+const AuthContext = createContext<AuthState | undefined>(undefined);
+
+const [user, setUser] = useState<User | null>(null);
+
 const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
   const isAuthenticated = !!user;
 
   const login: AuthState["login"] = (email, password) => {
@@ -62,6 +63,6 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   );
 };
 
-export const useAuth = (): AuthState => useContext(AuthContext)!;
-
 export { AuthProvider };
+
+export const useAuth = (): AuthState => useContext(AuthContext)!;
