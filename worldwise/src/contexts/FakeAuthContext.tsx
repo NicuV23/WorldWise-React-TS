@@ -1,7 +1,7 @@
 import React, {
   createContext,
   useContext,
-  useReducer,
+  useState,
   ReactNode,
   FC,
 } from "react";
@@ -16,42 +16,15 @@ interface User {
 interface AuthState {
   user: User | null;
   isAuthenticated: boolean;
+  login: (email: string, password: string) => void;
+  logout: () => void;
 }
 
 interface AuthProviderProps {
   children: ReactNode;
 }
 
-type AuthAction =
-  | { type: "login"; payload: AuthState["user"] }
-  | { type: "logout" };
-
-const AuthContext = createContext<
-  | {
-      user: AuthState["user"];
-      isAuthenticated: AuthState["isAuthenticated"];
-      login: (email: string, password: string) => void;
-      logout: () => void;
-    }
-  | undefined
->(undefined);
-
-const initialState: AuthState = {
-  user: null,
-  isAuthenticated: false,
-};
-
-const reducer: (state: AuthState, action: AuthAction) => AuthState = (
-  state,
-  action
-) => {
-  switch (action.type) {
-    case "login":
-      return { ...state, user: action.payload, isAuthenticated: true };
-    case "logout":
-      return { ...state, user: null, isAuthenticated: false };
-  }
-};
+const AuthContext = createContext<AuthState | undefined>(undefined);
 
 const FAKE_USER: User = {
   name: "Jack",
@@ -61,34 +34,34 @@ const FAKE_USER: User = {
 };
 
 const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
-  const [{ user, isAuthenticated }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [user, setUser] = useState<User | null>(null);
+  const isAuthenticated = !!user;
 
-  const login: (email: string, password: string) => void = (
-    email,
-    password
-  ) => {
+  const login: AuthState["login"] = (email, password) => {
     const isCredentialsValid =
       email === FAKE_USER.email && password === FAKE_USER.password;
 
     if (isCredentialsValid) {
-      dispatch({ type: "login", payload: FAKE_USER });
+      setUser(FAKE_USER);
     }
   };
 
-  const logout: () => void = () => {
-    dispatch({ type: "logout" });
+  const logout: AuthState["logout"] = () => {
+    setUser(null);
+  };
+
+  const contextValue: AuthState = {
+    user,
+    isAuthenticated,
+    login,
+    logout,
   };
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, login, logout }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
 };
 
-export const useAuth = () => useContext(AuthContext) as AuthState;
+export const useAuth = (): AuthState => useContext(AuthContext)!;
 
 export { AuthProvider };

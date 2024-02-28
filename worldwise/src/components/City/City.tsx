@@ -30,15 +30,16 @@ const City: React.FC = () => {
   return (
     <div className={styles.city}>
       <div className={styles.row}>
-        <h6>City name</h6>
+        <h6>City name :</h6>
         <h3>
-          <FlagImage countryCode={countryCode} /> {cityName}
+          <FlagImage countryCode={countryCode} />{" "}
+          <span className={styles.name}>{cityName}</span>
         </h3>
       </div>
 
       <div className={styles.row}>
-        <h6>You went to {cityName} on</h6>
-        {formattedDate(currentCity.date || "")}
+        <h6>You went to {cityName} on :</h6>
+        <h3> {formattedDate(currentCity.date || "")}</h3>
       </div>
 
       {notes && (
@@ -49,7 +50,7 @@ const City: React.FC = () => {
       )}
 
       <div className={styles.row}>
-        <h6>Learn more</h6>
+        <h6>Learn more :</h6>
         <a
           href={`https://en.wikipedia.org/wiki/${cityName}`}
           target="_blank"

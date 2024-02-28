@@ -15,3 +15,46 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+@media only screen and (min-height: 200px) {
+  .countryList {
+    height: 0px;
+  }
+}
+
+@media only screen and (max-height: 250px) {
+  .countryList {
+    height: 0px;
+    display: none;
+  }
+}
+
+@media only screen and (min-height: 300px) {
+  .countryList {
+    height: 75px;
+  }
+}
+
+@media only screen and (min-height: 400px) {
+  .countryList {
+    height: 145px;
+  }
+}
+
+@media only screen and (min-height: 500px) {
+  .countryList {
+    height: 245px;
+  }
+}
+
+@media only screen and (min-height: 550px) {
+  .countryList {
+    height: 275px;
+  }
+}
+
+@media only screen and (min-height: 600px) {
+  .countryList {
+    height: 355px;
+  }
+}

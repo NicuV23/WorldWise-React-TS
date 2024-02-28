@@ -1,10 +1,10 @@
 import React, {
   createContext,
   useContext,
-  useEffect,
   ReactNode,
   FC,
   useState,
+  useRef,
 } from "react";
 
 interface Location {
@@ -35,7 +35,6 @@ interface CitiesProviderProps {
 }
 
 const CitiesContext = createContext<CitiesContextProps | null>(null);
-
 const CitiesProvider: FC<CitiesProviderProps> = ({ children }) => {
   const [state, setState] = useState<CitiesState>({
     locations: [],
@@ -46,25 +45,22 @@ const CitiesProvider: FC<CitiesProviderProps> = ({ children }) => {
     error: "",
   });
 
-  useEffect(() => {
-    setState((prev) => ({ ...prev, isLoading: true }));
-
-    const initialData: Location[] = [];
-
-    setState((prev) => ({ ...prev, locations: initialData, isLoading: false }));
-  }, []);
+  const isLoadingRef = useRef(false);
 
   const getCity = (id: string) => {
-    setState((prev) => {
-      const cityById: Location | undefined = prev.locations.find(
-        (city) => city.id === Number(id)
-      );
-      return {
-        ...prev,
-        isLoading: false,
-        currentCity: cityById || prev.currentCity,
-      };
-    });
+    if (!isLoadingRef.current) {
+      isLoadingRef.current = true;
+      setState((prev) => {
+        const cityById: Location | undefined = prev.locations.find(
+          (city) => city.id === Number(id)
+        );
+        return {
+          ...prev,
+          isLoading: false,
+          currentCity: cityById || prev.currentCity,
+        };
+      });
+    }
   };
 
   const createLocation = (newCity: Location) => {

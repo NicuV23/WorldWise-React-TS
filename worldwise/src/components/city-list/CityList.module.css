@@ -14,3 +14,46 @@
 .cityList::-webkit-scrollbar {
   width: 0;
 }
+
+@media only screen and (min-height: 200px) {
+  .cityList {
+    height: 0px;
+  }
+}
+
+@media only screen and (max-height: 250px) {
+  .cityList {
+    height: 0px;
+    display: none;
+  }
+}
+
+@media only screen and (min-height: 300px) {
+  .cityList {
+    height: 75px;
+  }
+}
+
+@media only screen and (min-height: 400px) {
+  .cityList {
+    height: 145px;
+  }
+}
+
+@media only screen and (min-height: 500px) {
+  .cityList {
+    height: 245px;
+  }
+}
+
+@media only screen and (min-height: 550px) {
+  .cityList {
+    height: 275px;
+  }
+}
+
+@media only screen and (min-height: 600px) {
+  .cityList {
+    height: 355px;
+  }
+}
