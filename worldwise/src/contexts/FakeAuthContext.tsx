@@ -33,9 +33,9 @@ const FAKE_USER: User = {
 
 const AuthContext = createContext<AuthState | undefined>(undefined);
 
-const [user, setUser] = useState<User | null>(null);
-
 const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
+  const [user, setUser] = useState<User | null>(null);
+
   const isAuthenticated = !!user;
 
   const login: AuthState["login"] = (email, password) => {

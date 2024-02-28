@@ -5,7 +5,7 @@ import React, { useMemo } from "react";
 import LoadingScreen from "../loading-screen/LoadingScreen";
 
 const CountryList: React.FC = () => {
-  const { locations, isLoading } = useCities();
+  const { locations } = useCities();
 
   const memoizedCountryList = useMemo(() => {
     return (
@@ -22,7 +22,7 @@ const CountryList: React.FC = () => {
   }, [locations]);
 
   return (
-    <LoadingScreen isLoading={isLoading} length={locations.length}>
+    <LoadingScreen isLoading={false} length={locations.length}>
       {memoizedCountryList}
     </LoadingScreen>
   );

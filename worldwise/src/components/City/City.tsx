@@ -3,13 +3,12 @@ import { useParams } from "react-router-dom";
 import { useCities } from "../../contexts/CitiesContext";
 import BackButton from "../back-button/BackButton";
 import styles from "./City.module.css";
-import Spinner from "../spinner/Spinner";
 import FlagImage from "../flag-image/FlagImage";
 import { formattedDate } from "../../utils/FormattedDate";
 
 const City: React.FC = () => {
   const { id } = useParams();
-  const { getCity, currentCity, isLoading } = useCities();
+  const { getCity, currentCity } = useCities();
 
   useEffect(() => {
     if (id) {
@@ -18,10 +17,6 @@ const City: React.FC = () => {
   }, [id, getCity]);
 
   const { cityName, countryCode, notes } = currentCity;
-
-  if (isLoading) {
-    return <Spinner />;
-  }
 
   if (!currentCity.id) {
     return <div>Error: City not found</div>;

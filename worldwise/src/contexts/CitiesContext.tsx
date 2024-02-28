@@ -34,15 +34,15 @@ interface CitiesProviderProps {
 
 const CitiesContext = createContext<CitiesContextProps | null>(null);
 
-const [state, setState] = useState<CitiesState>({
-  locations: [],
-  currentCity: {
-    id: 0,
-  },
-  error: "",
-});
-
 const CitiesProvider: FC<CitiesProviderProps> = ({ children }) => {
+  const [state, setState] = useState<CitiesState>({
+    locations: [],
+    currentCity: {
+      id: 0,
+    },
+    error: "",
+  });
+
   const getCity = (id: string) => {
     setState((prev) => {
       if (prev.currentCity.id === Number(id)) {

@@ -6,7 +6,6 @@ import BackButton from "../back-button/BackButton";
 import styles from "./Form.module.css";
 import { useUrlPosition } from "../../hooks/useUrlPosition";
 import Message from "../message/Message";
-import Spinner from "../spinner/Spinner";
 import { Location, useCities } from "../../contexts/CitiesContext";
 import { useNavigate } from "react-router-dom";
 import FlagImage from "../flag-image/FlagImage";
@@ -15,22 +14,20 @@ const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 
 const Form: React.FC = () => {
   const [lat, lng] = useUrlPosition();
-  const { createLocation, isLoading } = useCities();
+  const { createLocation } = useCities();
   const navigate = useNavigate();
 
-  const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
-  const [location, setLocation] = useState<Location>();
+  const [location, setLocation] = useState<Location | null>(null);
   const [geocodingError, setGeocodingError] = useState("");
 
   useEffect(() => {
-    if (!lat && !lng) {
-      return;
-    }
-
     const fetchCityData = async () => {
       try {
-        setIsLoadingGeocoding(true);
         setGeocodingError("");
+
+        if (!lat || !lng) {
+          throw new Error("Start by clicking somewhere on the map");
+        }
 
         const response = await fetch(
           `${BASE_URL}?latitude=${lat}&longitude=${lng}`
@@ -57,28 +54,22 @@ const Form: React.FC = () => {
         if (err instanceof Error) {
           setGeocodingError(err.message);
         }
-      } finally {
-        setIsLoadingGeocoding(false);
       }
     };
 
     fetchCityData();
   }, [lat, lng]);
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
 
     if (!location?.cityName || !location.date) {
       return;
     }
 
-    await createLocation(location);
+    createLocation(location);
     navigate("/app/cities");
   };
-
-  if (isLoadingGeocoding) {
-    return <Spinner />;
-  }
 
   if (!lat && !lng) {
     return <Message message="Start by clicking somewhere on the map" />;
@@ -89,10 +80,7 @@ const Form: React.FC = () => {
   }
 
   return (
-    <form
-      className={`${styles.form} ${isLoading ? styles.loading : ""}`}
-      onSubmit={handleSubmit}
-    >
+    <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.row}>
         <label htmlFor="cityName">City name</label>
         <input
@@ -100,7 +88,7 @@ const Form: React.FC = () => {
           onChange={(e) =>
             setLocation({ ...location, [e.target.name]: e.target.value })
           }
-          value={location?.cityName}
+          value={location?.cityName || ""}
         />
         <span className={styles.flag}>
           <FlagImage countryCode={location?.countryCode || ""} />
@@ -109,7 +97,6 @@ const Form: React.FC = () => {
 
       <div className={styles.row}>
         <label htmlFor="date">When did you go to {location?.cityName}?</label>
-
         <DatePicker
           id="date"
           onChange={(date) => setLocation({ ...location, date })}
@@ -125,7 +112,7 @@ const Form: React.FC = () => {
         <textarea
           id="notes"
           onChange={(e) => setLocation({ ...location, notes: e.target.value })}
-          value={location?.notes}
+          value={location?.notes || ""}
         />
       </div>
 

@@ -5,7 +5,7 @@ import React, { useMemo, useCallback } from "react";
 import LoadingScreen from "../loading-screen/LoadingScreen";
 
 const CityList: React.FC = () => {
-  const { locations, isLoading, deleteCity } = useCities();
+  const { locations, deleteCity } = useCities();
 
   const handleDelete = useCallback(
     (id: number) => {
@@ -33,7 +33,7 @@ const CityList: React.FC = () => {
   }, [locations, handleDelete]);
 
   return (
-    <LoadingScreen isLoading={isLoading} length={locations.length}>
+    <LoadingScreen isLoading={false} length={locations.length}>
       {memoizedCityList}
     </LoadingScreen>
   );
